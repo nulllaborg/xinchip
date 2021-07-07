@@ -1,0 +1,18 @@
+;
+;
+
+
+LOAD	0x10000000	
+{
+	EXE	0x10000000
+	{
+        startup_xinc.o (RESET, +FIRST)
+		* (+RO)
+	
+	}
+	RW	+0x1000
+	{
+		* (+RW,+ZI)
+	}
+}
+
