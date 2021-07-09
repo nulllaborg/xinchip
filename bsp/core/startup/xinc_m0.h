@@ -129,7 +129,7 @@
 #pragma anon_unions
 #endif
 
-#include	"xinc_reg.h"
+//#include	"xinc_reg.h"
 
 
 #if defined ( __CC_ARM   )

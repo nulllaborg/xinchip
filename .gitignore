@@ -1,0 +1,4 @@
+*.o
+*.p
+/Project/led/mdk/Listings
+/Project/led/mdk/Objects

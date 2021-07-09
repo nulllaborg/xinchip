@@ -15,8 +15,7 @@
 #define digitalPinHasPWM(p)         ((p) == 3 || (p) == 5 || (p) == 6 || (p) == 9 || (p) == 10 || (p) == 11)
 #endif
 
-#define PIN_SPI_SS    (9)          // Redirected in main.cpp at line 77
-#define PIN_SPI_SS    (10)
+#define PIN_SPI_SS    (9)
 
 #define PIN_SPI_MOSI  (11)
 #define PIN_SPI_MISO  (12)
@@ -35,57 +34,58 @@ static const uint8_t SCL = PIN_WIRE_SCL;
 
 #define LED_BUILTIN 	(13)
 
-#define PIN_A0   (14)
-#define PIN_A1   (15)
-#define PIN_A2   (16)
-#define PIN_A3   (17)
-#define PIN_A4   (18)
-#define PIN_A5   (19)
-#define PIN_A6   (20)
-#define PIN_A7   (21)
+#define PIN_A0   (21)
+#define PIN_A1   (20)
+#define PIN_A2   (19)
+#define PIN_A3   (18)
+#define PIN_A4   (0)
+#define PIN_A5   (1)
+#define PIN_A6   (4)
+#define PIN_A7   (5)
 
-static const uint8_t A0 = 14;
-static const uint8_t A1 = 15;
-static const uint8_t A2 = 16;
-static const uint8_t A3 = 17;
-static const uint8_t A4 = 18;
-static const uint8_t A5 = 19;
-static const uint8_t A6 = 20;
-static const uint8_t A7 = 21;
+static const uint8_t A0 = 0;
+static const uint8_t A1 = 1;
+static const uint8_t A2 = 2;
+static const uint8_t A3 = 3;
+static const uint8_t A4 = 4;
+static const uint8_t A5 = 5;
+static const uint8_t A6 = 6;
+static const uint8_t A7 = 7;
 
-#define D0	0	/* PD0 */
-#define D1	1	/* PD1 */
-#define D2	2	/* PD2 */
-#define D3	3	/* PD3 */
-#define D4	4	/* PD4 */
-#define D5	5	/* PD5 */
-#define D6	6	/* PD6 */
-#define D7	7	/* PD7 */
+#define D0	0
+#define D1	1
+#define D2	2
+#define D3	3
+#define D4	4
+#define D5	5
+#define D6	6
+#define D7	7
 
-#define D8	8	/* PB0 */
-#define D9	9	/* PB1 */
-#define D10	10	/* PB2 */
-#define D11	11	/* PB3 */
-#define D12	12	/* PB4 */
-#define D13	13	/* PB5 */
+#define D8	8
+#define D9	9
+#define D10	10
+#define D11	11
+#define D12	12
+#define D13	13
 
-#define D14	14	/* PC0 */
-#define D15	15	/* PC1 */
-#define D16	16	/* PC2 */
-#define D17	17	/* PC3 */
-#define D18	18	/* PC4 */
-#define D19	19	/* PC5 */
-
+#define D14	14
+#define D15	15
+#define D16	16
+#define D17	17
+#define D18	18
+#define D19	19
 
 #define digitalPinToInterrupt(p)  ((p) == 2 ? 0 : ((p) == 3 ? 1 : NOT_AN_INTERRUPT))
 
 #ifdef ARDUINO_MAIN
 
+const uint8 boardADCPins[NUM_ANALOG_INPUTS] __FLASH__ = {
+    21, 20, 19 , 18 , 0 , 1 , 4 , 5
+};
 
 const uint16_t port_to_mode_PGM[] = {
 	NOT_A_PORT,
 	NOT_A_PORT,
-
 };
 
 const uint8_t digital_pin_to_timer_PGM[] = {

@@ -1,8 +1,8 @@
-
 #ifndef Arduino_h
 #define Arduino_h
 
 #include <stdlib.h>
+#include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
 #include <math.h>
@@ -13,7 +13,6 @@
 extern "C"{
 #endif
 
-
 #define HIGH 0x1
 #define LOW  0x0
 
@@ -21,7 +20,7 @@ extern "C"{
 #define OUTPUT 0x1
 #define INPUT_PULLUP 0x2
 #define INPUT_PULLDOWN 0x3
-#define ANALOG	0x4
+#define INPUT_ANALOG 0x4
 
 #define PI 3.1415926535897932384626433832795
 #define HALF_PI 1.5707963267948966192313216916398
@@ -72,11 +71,6 @@ extern "C"{
 #define bitClear(value, bit) ((value) &= ~(1UL << (bit)))
 #define bitWrite(value, bit, bitvalue) (bitvalue ? bitSet(value, bit) : bitClear(value, bit))
 
-#define writeReg32(reg,val)  ((*reg) = (val))
-#define readReg32(reg, val)  ((val) = (*reg))  
-
-#define reg_read16(reg) (*(volatile unsigned short*)(reg))
-#define reg_write16(reg,val) (*(volatile unsigned short*)(reg) = (val))
 
 typedef unsigned int word;
 
@@ -116,14 +110,12 @@ void detachInterrupt(uint8_t);
 // Get the bit location within the hardware port of the given virtual pin.
 // This comes from the pins_*.c file for the active board configuration.
 
-#define analogInPinToBit(P) (P)
-
-
+#define analogToPin(A) boardADCPins[A]
 #define digitalPinToPort(P) (P>>4)
 #define digitalPinToBitMask(P) (1 << (P&0x0F))
 #define digitalPinToTimer(P) ((P))
 
-#define portOutputRegister(P) ( GPIO_PORT_DR0 + (P))
+#define portOutputRegister(P) (GPIO_PORT_DR0 + (P))
 #define portInputRegister(P) (GPIO_EXT_PORT0 + (P>>1))
 #define portModeRegister(P) (GPIO_PORT_DDR0 + (P))
 
@@ -131,7 +123,6 @@ void detachInterrupt(uint8_t);
 #define NOT_A_PORT 0
 
 #define NOT_AN_INTERRUPT -1
-
 
 #define NOT_ON_TIMER 0x00
 #define TIMER0    0x10
@@ -161,11 +152,9 @@ void detachInterrupt(uint8_t);
 #define TIMER3BX  0x44
 #define TIMER3AA  0x45
 
-
 #ifdef __cplusplus
 } // extern "C"
 #endif
-
 
 #include "pins_arduino.h"
 
@@ -174,7 +163,7 @@ void sysClockPrescale(uint8_t div);
 void sysClockOutput(uint8_t enable);
 
 #ifndef nop
-#define	nop()	__asm__ __volatile__ ("nop" ::)
+#define	nop()   __asm__ __volatile__ ("nop" ::)
 #endif
 
 #endif
