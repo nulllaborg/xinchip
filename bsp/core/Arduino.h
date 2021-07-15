@@ -91,7 +91,7 @@ int digitalRead(uint8_t);
 void digitalToggle(uint8_t);
 int analogRead(uint8_t);
 void analogReference(uint8_t mode);
-void analogWrite(uint8_t, uint16_t);
+void analogWrite(uint8_t, uint8_t);
 void analogReadResolution(uint8_t);
 
 unsigned long millis(void);

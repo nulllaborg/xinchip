@@ -1,21 +1,30 @@
 #include "adc.h"
 
+void adc_set_reference(uint8_t mode)
+{
+    if (mode) {
+        setBitReg32(GPADC_RF_CTL, bit(1));
+    } else {
+        clearBitReg32(GPADC_RF_CTL, bit(1));
+    }
+}
+
 void init_adc(void)
 {
     setClearReg32(CPR_RSTCTL_CTLAPB_SW, bit(12));
     setBitReg32(CPR_RSTCTL_CTLAPB_SW, bit(12));    /*先使GPADC_RSTN=0，再使 GPADC_RSTN=1，软复位 GPADC 模块*/
     setBitReg32(CPR_CTLAPBCLKEN_GRCTL, 0x20002000);//使能GPADC_PCLK_EN 的GPADC_PCLK时钟
-    setBitReg32(GPADC_FIFO_CTL, bit(5));//对 FIFO 进 行 一 次 清 空 操 作
+    setBitReg32(GPADC_FIFO_CTL, bit(5));   //对FIFO进行一次清空操作
     setClearReg32(GPADC_FIFO_CTL, bit(5));//
-    writeReg32(GPADC_RF_CTL, 0x810);// 配置寄存器 GPADC_RF_CTL   GPADC_PCLK/(gpadc_clkdiv*2)=16M/16=1M ,select 2.4V vref
-    writeReg32(GPADC_MAIN_CTL, 0x09);// 配置寄存器 GPADC_MAIN_CTL 打开GPADC模块，，数据采集上升沿
+    writeReg32(GPADC_RF_CTL, 0x810);      // 配置寄存器 GPADC_RF_CTL   GPADC_PCLK/(gpadc_clkdiv*2)=16M/16=1M ,select 2.4V vref
+    writeReg32(GPADC_MAIN_CTL, 0x09);     // 配置寄存器 GPADC_MAIN_CTL 打开GPADC模块，，数据采集上升沿
 }
 
-void adc_gpio_config(uint16_t pin)
+void adc_gpio_config(uint16_t ch)
 {
-    gpio_mux_ctl(pin, 0);
-    gpio_fun_sel(pin, GPIO_Dx);
-    gpio_fun_inter(pin, NO_INT);
+    gpio_mux_ctl(adc_Pins[ch], 0);
+    gpio_fun_sel(adc_Pins[ch], GPIO_Dx);
+    gpio_fun_inter(adc_Pins[ch], NO_INT);
 }
 
 void adc_config_channel(uint16_t channel)
@@ -56,6 +65,3 @@ int get_adc_val(uint8_t ch)
 	writeReg32(GPADC_FIFO_CTL, 0x00); //注意读一次后一定要清空FIFO否则会引起严重的滞后效应
     return result;
 }
-
-
-

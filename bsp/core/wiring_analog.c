@@ -4,7 +4,7 @@
 #if defined(__XC6x0__)
 void analogImproving(void)
 {
-	writeReg32(CPR_AO_BASE + 0x20)), 0x2e);
+    writeReg32(CPR_AO_BASE + 0x20)), 0x2e);
 }
 #endif
 
@@ -21,4 +21,9 @@ void analogReference(uint8_t mode)
 int analogRead(uint8_t channel)
 {
     get_adc_val(channel);
+}
+
+void analogWrite(uint8_t pin, uint8_t val)
+{
+    pwm_set(boardPWMPins[pin], 1000, val);
 }

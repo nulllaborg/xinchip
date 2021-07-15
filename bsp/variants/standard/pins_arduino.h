@@ -4,8 +4,9 @@
 
 #include <stdint.h>
 
-#define NUM_DIGITAL_PINS            16
-#define NUM_ANALOG_INPUTS           8
+#define NUM_DIGITAL_PINS    16
+#define NUM_ANALOG_INPUTS   8
+#define NUM_PWM_PINS   6
 
 #define analogInputToDigitalPin(p)  ((p < 6) ? (p) + 14 : -1)
 
@@ -52,35 +53,35 @@ static const uint8_t A5 = 5;
 static const uint8_t A6 = 6;
 static const uint8_t A7 = 7;
 
-#define D0	0
-#define D1	1
-#define D2	2
-#define D3	3
-#define D4	4
-#define D5	5
-#define D6	6
-#define D7	7
+#define D0  0
+#define D1  1
+#define D2  2
+#define D3  3
+#define D4  4
+#define D5  5
+#define D6  6
+#define D7  7
 
-#define D8	8
-#define D9	9
-#define D10	10
-#define D11	11
-#define D12	12
-#define D13	13
+#define D8  8
+#define D9  9
+#define D10 10
+#define D11 11
+#define D12 12
+#define D13 13
 
-#define D14	14
-#define D15	15
-#define D16	16
-#define D17	17
-#define D18	18
-#define D19	19
+#define D14 14
+#define D15 15
+#define D16 16
+#define D17 17
+#define D18 18
+#define D19 19
 
 #define digitalPinToInterrupt(p)  ((p) == 2 ? 0 : ((p) == 3 ? 1 : NOT_AN_INTERRUPT))
 
 #ifdef ARDUINO_MAIN
 
 const uint8 boardADCPins[NUM_ANALOG_INPUTS] __FLASH__ = {
-    21, 20, 19 , 18 , 0 , 1 , 4 , 5
+    2, 3, 19 , 18 , 0 , 1 , 4 , 5
 };
 
 const uint16_t port_to_mode_PGM[] = {
@@ -88,11 +89,10 @@ const uint16_t port_to_mode_PGM[] = {
 	NOT_A_PORT,
 };
 
-const uint8_t digital_pin_to_timer_PGM[] = {
-	NOT_ON_TIMER,
-	NOT_ON_TIMER,
-	NOT_ON_TIMER,
+const uint8 boardPWMPins[NUM_PWM_PINS] __FLASH__ = {
+    21, 20, 0 , 1 , 12 , 13
 };
+
 
 #endif
 
