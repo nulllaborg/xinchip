@@ -10,11 +10,11 @@
  #include "system.h"
  #include "board.h"
  
-extern void retarget_init(void);
-
+ /*
 void SysTick_Handler(void)
 {
 }
+*/
 
 void delay_us(unsigned int us)
 {
@@ -52,7 +52,7 @@ void CTL_APBPclkCmd(EM_APB_PCLK_Source source, uint8_t enable)
          clearBitReg32(CPR_CTLAPBCLKEN_GRCTL, 1 << source);
     }
 }
- 
+/*
 void SystemInit (void)
 {
     //
@@ -63,4 +63,4 @@ void SystemInit (void)
     //此寄存器的默认值是0x2c，设为0x2d是为了方便在低功耗和非低功耗中折中同时使用；
     //如果不使用低功耗不需要考虑功耗那么可以直接设置为0x2e;
     *((volatile unsigned *)(CPR_AO_BASE + 0x20)) = 0x2d;
-}
+} */

@@ -5,15 +5,21 @@
 
 void board_init(void)
 {
-    #if (XC_TIMER == 1)
+    #if (ENABLE_TIMER == 1)
     init_timer();
     #endif
     
-    #if (XC_GPIO == 1)
+    #if (ENABLE_GPIO == 1)
     init_gpio();
     #endif
     
-    #if (XC_GPADC == 1)
+    #if (ENABLE_GPADC == 1)
     init_adc();
+    #endif
+    
+    #if (ENABL_UART0 == 1)
+    #endif
+
+    #if (ENABL_UART1 == 1)
     #endif
 }

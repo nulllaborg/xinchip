@@ -9,6 +9,8 @@
 #define FALSE 0
 #endif
 
+#define ASSERT(a)    while(!(a))
+
 #define CPU_CLOCK   32000000ul      /* Set Processor frequency */
 #define US_TICKS    32     //CPU_CLOCK/1000000
 #define MS_TICKS    32000  //CPU_CLOCK/1000

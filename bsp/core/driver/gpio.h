@@ -1,5 +1,5 @@
-#ifndef     __BSP_GPIO_H_
-#define     __BSP_GPIO_H_
+#ifndef _GPIO_H_
+#define _GPIO_H_
 
 #include "board.h"
 
@@ -163,8 +163,8 @@ typedef struct int_config_i {
 
 
 void init_gpio(void);
-void gpio_mux_ctl(uint8_t num,uint8_t mux);
-void gpio_fun_inter(uint8_t num,uint8_t inter);
-void gpio_fun_sel(uint8_t num,uint8_t sel);
+void gpio_mux_ctl(uint8_t num, uint8_t mux);
+void gpio_fun_inter(uint8_t num, uint8_t inter);
+void gpio_fun_sel(uint8_t num, uint8_t sel);
 
 #endif

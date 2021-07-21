@@ -35,7 +35,8 @@ gpio_fun_sel_config_t gpio_fun_sel_config = {
 
 void init_gpio(void)
 {
-    CTL_APBPclkCmd(GPIO_PCLK, TRUE); /*gpio_pclk enable*/
+	  writeReg32(CPR_CTLAPBCLKEN_GRCTL , 0x40004); 
+    // CTL_APBPclkCmd(GPIO_PCLK, TRUE); /*gpio_pclk enable*/
     writeReg32(CPR_OTHERCLKEN_GRCTL, 0x10001);  /*gpio_clk  enable*/
     writeReg32(CPR_GPIO_FUN_SEL0, gpio_fun_sel_config.fun_sel0.config); 
     writeReg32(CPR_GPIO_FUN_SEL1, gpio_fun_sel_config.fun_sel1.config);
@@ -111,7 +112,7 @@ void init_gpio(void)
 - GPIO24: 【mux=0 连接到gpio_d[24]】 【mux=1 NA】               【mux=2 NA】         【mux=3 NA】
 - GPIO25: 【mux=0 连接到gpio_d[25]】 【mux=1 NA】               【mux=2 NA】         【mux=3 NA】
 - ----------------------------------------------------------------------------------------------------*/
-void gpio_mux_ctl(uint8_t pin, uint8_t mux)
+ void gpio_mux_ctl(uint8_t pin, uint8_t mux)
 {
     uint8_t bitmask = digitalPinToBitMask(pin);
     uint8_t port = digitalPinToPort(pin);
@@ -119,6 +120,17 @@ void gpio_mux_ctl(uint8_t pin, uint8_t mux)
     clearBitReg32((CPR_CTL_MUXCTL1 + port), 3 << bitmask*2);
     setBitReg32((CPR_CTL_MUXCTL1 + port), mux << bitmask*2);
 }
+
+/*
+void gpio_mux_ctl(uint8_t num,uint8_t mux)
+{
+    if(mux>3) return;
+    uint32_t temp=0;
+    readReg32((CPR_CTL_MUXCTL1+(num/16)),temp);
+    temp=(temp&(~(0x3<<((num%16)*2))))|(mux<<((num%16)*2));
+    writeReg32((CPR_CTL_MUXCTL1+(num/16)),temp);    
+}
+ */
 
 /* ---------------------------------------------------------------------------------------------------
 - 函数名称: gpio_fun_sel
@@ -146,13 +158,23 @@ void gpio_mux_ctl(uint8_t pin, uint8_t mux)
 -【sel=19  PWM1互补输出:PWM1_INV(32/16PIN新增)】
 - 创建日期: 2019-12-03
 ----------------------------------------------------------------------------------------------------*/
+
 void gpio_fun_sel(uint8_t pin, uint8_t fun)
 {
-    uint8_t bitmask = digitalPinToBitMask(pin);
-    uint8_t port = digitalPinToPort(pin);
+    uint8_t bitmask = pin%4;
+		uint8_t port = pin/4;
     if (fun > 19) return;
     clearBitReg32((CPR_GPIO_FUN_SEL0 + port), 3 << bitmask*8);
     setBitReg32((CPR_GPIO_FUN_SEL0 + port), fun << bitmask*8);
+}
+
+void gpio_fun_inter(uint8_t pin, uint8_t inter)
+{
+    uint8_t bitmask = pin%4;
+		uint8_t port = pin/4;
+    if (inter > 0xF) return;
+	  clearBitReg32((GPIO_INTR_CTRL0 + port), 1 << bitmask*4);
+    setBitReg32((CPR_GPIO_FUN_SEL0 + port), inter << bitmask*4);
 }
 
 void gpio_sleep_config(void)
@@ -162,15 +184,15 @@ void gpio_sleep_config(void)
     writeReg32((volatile unsigned *)(0x40002400+0x38),0x55555555); //pectrl2 = 0x55555555
     // writeReg32((volatile unsigned *)(0x40002400+0x3c),0xF);        //spi0 flash脚上下拉配置（如果不配置会漏电200多微安）
 
-        //关闭所有GPIO中断
-        writeReg32(GPIO_INTR_CTRL0, 0xF0000);
-        writeReg32(GPIO_INTR_CTRL1, 0xF0000);
-        writeReg32(GPIO_INTR_CTRL2, 0xF0000);
-        writeReg32(GPIO_INTR_CTRL3, 0xF0000);
-        writeReg32(GPIO_INTR_CTRL4, 0xF0000);
-        writeReg32(GPIO_INTR_CTRL5, 0xF0000);
-        writeReg32(GPIO_INTR_CTRL6, 0xF0000);
-        writeReg32(GPIO_INTR_CTRL7, 0xF0000);
+		//关闭所有GPIO中断
+		writeReg32(GPIO_INTR_CTRL0, 0xF0000);
+		writeReg32(GPIO_INTR_CTRL1, 0xF0000);
+		writeReg32(GPIO_INTR_CTRL2, 0xF0000);
+		writeReg32(GPIO_INTR_CTRL3, 0xF0000);
+		writeReg32(GPIO_INTR_CTRL4, 0xF0000);
+		writeReg32(GPIO_INTR_CTRL5, 0xF0000);
+		writeReg32(GPIO_INTR_CTRL6, 0xF0000);
+		writeReg32(GPIO_INTR_CTRL7, 0xF0000);
     //将所有GPIO管脚配置成输入下拉
     for (int i=0;i<32;i++)
     {
