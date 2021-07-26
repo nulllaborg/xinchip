@@ -1,5 +1,5 @@
-#ifndef ___UART_H_
-#define ___UART_H_
+#ifndef _UART_H_
+#define _UART_H_
 
 #include <stdint.h>
 
@@ -20,6 +20,14 @@
 #define  BAUD_4800      0x0240271C
 #define  BAUD_2400      0x0120271C
 
+#define UART_FIFO_BUF_SIZE 8
+#define UART_TX_THR 0x20   //tx is empty isr
+#define UART_TX_FIFO_IS_FULL 0x20
+#define UART_RX_RADY 0x01
+
+#define R_UARTx_TSR(a) (*UARTx_TSR(a))
+#define R_UARTx_RBR(a) (*UARTx_RBR(a))
+
 #if (ENABLE_UART0 == 1)
 #define UART0_TX_PIN    18
 #define UART0_RX_PIN    19
@@ -27,9 +35,9 @@
 #endif
 
 #if (ENABLE_UART1 == 1)
-#define UART0_TX_PIN    18
-#define UART0_RX_PIN    19
-#define UART0_BAUD      115200
+#define UART1_TX_PIN    18
+#define UART1_RX_PIN    19
+#define UART1_BAUD      115200
 #endif
 
 #define UART_IIR_NONE           0x01
@@ -37,14 +45,17 @@
 #define UART_IIR_RECV           0x04
 #define UART_IIR_EEROR          0x06
 #define UART_IIR_BUSY           0x07
-#define UART_IIR_REC_TIME_OUT   0x0C
+#define UART_IIR_RECV_TIME_OUT   0x0C
 
-typedef uint32_t (*uHandler_callback)(uint8_t ch);
+typedef  uint32_t (*uHandler_callback)(uint8_t);
 
 void init_uart(uint8_t ch, uint8_t tx_pin, uint8_t rx_pin, uint32_t baud);
+uint8_t uart_read(uint8_t ch);
+uint32_t uart_recv_buf(uint8_t ch, uint8_t *buf);
+uint8_t uart_isr_status(uint8_t ch);
 void uart_register_callback(uint8_t ch, uHandler_callback callback);
 void uart_send_char(uint8_t ch, uint8_t c);
-void uart_send_str(uint8_t ch, uint8_t *s);
+void uart_send_str(uint8_t ch, char *s);
 void uart_send_buf(uint8_t ch, uint8_t *s, uint32_t length);
 void uart_dma_send(uint8_t ch, uint8_t *s, uint32_t length);
 

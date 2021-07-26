@@ -1,10 +1,11 @@
 #ifndef RINGBUFFER_H__
 #define RINGBUFFER_H__
-
+#include <stdint.h>
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#define _USING_HEAP 1
 /* ring buffer */
 struct st_ringbuffer
 {
@@ -55,14 +56,14 @@ enum ringbuffer_state
  * has no thread wait or resume feature.
  */
 enum ringbuffer_state ringbuffer_status(struct st_ringbuffer *rb);
-void ringbuffer_init(struct st_ringbuffer *rb, uint8_t *pool, int16_t size);
+void ringbuffer_init(struct st_ringbuffer *rb, uint8_t *pool, uint16_t size);
 void ringbuffer_reset(struct st_ringbuffer *rb);
 uint32_t ringbuffer_put(struct st_ringbuffer *rb, const uint8_t *ptr, uint16_t length);
 uint32_t ringbuffer_put_force(struct st_ringbuffer *rb, const uint8_t *ptr, uint16_t length);
 uint32_t ringbuffer_putchar(struct st_ringbuffer *rb, const uint8_t ch);
 uint32_t ringbuffer_putchar_force(struct st_ringbuffer *rb, const uint8_t ch);
 uint32_t ringbuffer_get(struct st_ringbuffer *rb, uint8_t *ptr, uint16_t length);
-uint8_t ringbuffer_getchar(struct st_ringbuffer *rb, uint8_t *ch);
+size_t ringbuffer_getchar(struct st_ringbuffer *rb, uint8_t *ch);
 uint32_t ringbuffer_data_len(struct st_ringbuffer *rb);
 
 #ifdef _USING_HEAP
@@ -78,7 +79,6 @@ inline int16_t ringbuffer_get_size(struct st_ringbuffer *rb)
 
 /** return the size of empty space in rb */
 #define ringbuffer_space_len(rb) ((rb)->buffer_size - ringbuffer_data_len(rb))
-
 
 #ifdef __cplusplus
 }

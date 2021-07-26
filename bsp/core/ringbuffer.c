@@ -1,5 +1,6 @@
-
 #include <string.h>
+#include <stdlib.h>
+#include "ringbuffer.h"
 
 enum ringbuffer_state ringbuffer_status(struct st_ringbuffer *rb)
 {
@@ -30,7 +31,7 @@ void ringbuffer_init(struct st_ringbuffer *rb, uint8_t *pool, uint16_t size)
 /**
  * put a block of data into ring buffer
  */
-size_t rt_ringbuffer_put(struct st_ringbuffer *rb, const uint8_t *ptr, uint16_t length)
+size_t ringbuffer_put(struct st_ringbuffer *rb, const uint8_t *ptr, uint16_t length)
 {
     uint16_t size;
 
@@ -72,7 +73,7 @@ size_t rt_ringbuffer_put(struct st_ringbuffer *rb, const uint8_t *ptr, uint16_t 
  *
  * When the buffer is full, it will discard the old data.
  */
-size_t rt_ringbuffer_put_force(struct st_ringbuffer *rb, const uint8_t *ptr, uint16_t length)
+size_t ringbuffer_put_force(struct st_ringbuffer *rb, const uint8_t *ptr, uint16_t length)
 {
     uint16_t space_length;
 
@@ -122,7 +123,7 @@ size_t rt_ringbuffer_put_force(struct st_ringbuffer *rb, const uint8_t *ptr, uin
 /**
  *  get data from ring buffer
  */
-size_t rt_ringbuffer_get(struct st_ringbuffer *rb, uint8_t *ptr, uint16_t length)
+size_t ringbuffer_get(struct st_ringbuffer *rb, uint8_t *ptr, uint16_t length)
 {
     size_t size;
 
@@ -166,9 +167,9 @@ size_t rt_ringbuffer_get(struct st_ringbuffer *rb, uint8_t *ptr, uint16_t length
 /**
  * put a character into ring buffer
  */
-size_t rt_ringbuffer_putchar(struct st_ringbuffer *rb, const uint8_t ch)
+size_t ringbuffer_putchar(struct st_ringbuffer *rb, const uint8_t ch)
 {
-    ASSERT(rb != NULL);
+   // ASSERT(rb != NULL);
 
     /* whether has enough space */
     if (!ringbuffer_space_len(rb))
@@ -197,11 +198,11 @@ size_t rt_ringbuffer_putchar(struct st_ringbuffer *rb, const uint8_t ch)
  */
 size_t ringbuffer_putchar_force(struct st_ringbuffer *rb, const uint8_t ch)
 {
-    enum ingbuffer_state old_state;
+    enum ringbuffer_state old_state;
 
     //ASSERT(rb != NULL);
 
-    old_state = rt_ringbuffer_status(rb);
+    old_state = ringbuffer_status(rb);
 
     rb->buffer_ptr[rb->write_index] = ch;
 
@@ -234,7 +235,7 @@ size_t ringbuffer_getchar(struct st_ringbuffer *rb, uint8_t *ch)
     //ASSERT(rb != NULL);
 
     /* ringbuffer is empty */
-    if (!rt_ringbuffer_data_len(rb))
+    if (!ringbuffer_data_len(rb))
         return 0;
 
     /* put character */
@@ -258,7 +259,7 @@ size_t ringbuffer_getchar(struct st_ringbuffer *rb, uint8_t *ch)
  */
 size_t ringbuffer_data_len(struct st_ringbuffer *rb)
 {
-    switch (rt_ringbuffer_status(rb))
+    switch (ringbuffer_status(rb))
     {
     case RINGBUFFER_EMPTY:
         return 0;
@@ -311,7 +312,7 @@ exit:
     return rb;
 }
 
-void rt_ringbuffer_destroy(struct st_ringbuffer *rb)
+void ringbuffer_destroy(struct st_ringbuffer *rb)
 {
     //ASSERT(rb != NULL);
 
