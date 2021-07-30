@@ -66,6 +66,7 @@ typedef enum{
 }GPIO_FUN_SEL_TypeDef;
 
 void CTL_APBPclkCmd(EM_APB_PCLK_Source source, unsigned char enable);
+void register_systick_callback(void (*fun)(void));
 void delay_us(unsigned int us);
 void delay_ms(unsigned int ms);
 #endif

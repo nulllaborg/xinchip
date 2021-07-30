@@ -11,7 +11,8 @@ void serial1_begin(uint32_t baud);
 void serial1_end(void);
 int serial1_available(void);
 int serial1_peek(void);
-uint8_t serial1_read(void);
+size_t serial1_read(void);
+size_t serial1_read_buf(uint8_t *buf, uint8_t len);
 int serial1_availableForWrite(void);
 void serial1_flush(void);
 size_t serial1_write(uint8_t c);
@@ -24,6 +25,7 @@ HardwareSerial Serial1 = {
     .available = serial1_available,
     .peek = serial1_peek,
     .read = serial1_read,
+	  .read_buf = serial1_read_buf,
     //int availableForWrite(void);
     .flush = serial1_flush,
     .write = serial1_write,
@@ -98,12 +100,18 @@ int serial1_peek(void)
   }
 }
 
-uint8_t serial1_read(void)
+size_t serial1_read(void)
 {
     uint8_t c;
     if (ringbuffer_getchar(&Serial1.rx_rb, &c)) return c;
     return 0;
 }
+
+size_t serial1_read_buf(uint8_t *buf, uint8_t len)
+{
+    return ringbuffer_get(&Serial1.rx_rb, buf, len);
+}
+
 
 int serial1_availableForWrite(void)
 {
@@ -119,12 +127,14 @@ size_t serial1_write(uint8_t c)
 {
     //return ringbuffer_putchar(&(Serial1.tx_rb), c);
     uart_send_char(1, c);
+	  return 1;
 }
 
 size_t serial1_write_buf(uint8_t *s, uint32_t len)
 {
     uart_send_buf(1, s, len);
    // return ringbuffer_put(&(Serial1.tx_rb), s, len);
+		return 1;
 }
 
 void serial1_printf(char *fmt, ...)

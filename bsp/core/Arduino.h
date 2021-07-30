@@ -112,7 +112,7 @@ void detachInterrupt(uint8_t);
 
 #define analogToPin(A) boardADCPins[A]
 #define digitalPinToPort(P) (P>>4)
-#define digitalPinToBitMask(P) (1 << (P&0x0F))
+#define digitalPinToBitMask(P) (P&0x0F)
 #define digitalPinToTimer(P) ((P))
 
 #define portOutputRegister(P) (GPIO_PORT_DR0 + (P))

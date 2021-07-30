@@ -91,15 +91,9 @@ void UART0_Handler(void)
 
 void UART1_Handler(void)
 {
-		static int flag = 0;
-	  flag ^= 1;
     uint32_t uart1_isr_status = 0;
 		readReg32(UART1_IIR , uart1_isr_status);
-		uart1_isr_status &= 0x0F;
-	  if(flag)
-	  gpio_output_high(25);
-		else
-		gpio_output_low(25);
+  	uart1_isr_status &= 0x0F;
 		if (uHandler_Callback[1] != (uHandler_callback)0)
 			(uHandler_Callback[1])(uart1_isr_status);
 }

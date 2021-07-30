@@ -11,7 +11,7 @@ void serial0_begin(uint32_t baud);
 void serial0_end(void);
 int serial0_available(void);
 int serial0_peek(void);
-uint8_t serial0_read(void);
+size_t serial0_read(void);
 int serial0_availableForWrite(void);
 void serial0_flush(void);
 size_t serial0_write(uint8_t c);
@@ -96,7 +96,7 @@ int serial0_peek(void)
   }
 }
 
-uint8_t serial0_read(void)
+size_t serial0_read(void)
 {
     uint8_t ch;
     if (ringbuffer_getchar(&Serial.rx_rb, &ch)) return ch;

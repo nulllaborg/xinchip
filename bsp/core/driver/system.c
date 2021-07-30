@@ -10,11 +10,20 @@
  #include "system.h"
  #include "board.h"
  
- /*
+ void (*systick_callback)(void);
+ 
+ void register_systick_callback(void (*fun)(void))
+ {
+		systick_callback = fun;
+ }
+ 
 void SysTick_Handler(void)
 {
+		if(systick_callback) {
+			systick_callback();
+		}
 }
-*/
+
 
 void delay_us(unsigned int us)
 {

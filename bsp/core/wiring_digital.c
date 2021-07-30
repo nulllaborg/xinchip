@@ -4,42 +4,34 @@
 
 void pinMode(uint8_t pin, uint8_t mode)
 {
+		gpio_fun_sel(pin, GPIO_Dx);
     gpio_mode_config(pin, mode);
 }
 
 void digitalWrite(uint8_t pin, uint8_t val)
 {
-    uint8_t bit = digitalPinToBitMask(pin);
-    uint8_t port = digitalPinToPort(pin);
-    volatile uint32_t *out;
-
-    if (port > 2) return;
-
-    out = portOutputRegister(port);
-
     if (val == LOW) {
-        *out &= ~bit;
+       gpio_output_low(pin);
     } else {
-        *out |= bit;
+       gpio_output_high(pin);
     }
 }
 
 int digitalRead(uint8_t pin)
 {
-    uint8_t bit = digitalPinToBitMask(pin);
-    uint8_t port = digitalPinToPort(pin);
-    if (port == NOT_A_PIN) return LOW;
-    if (*portInputRegister(port) & bit) return HIGH;
-    return LOW;
+		return ((int)gpio_input_val(pin));
 }
 
 void digitalToggle(uint8_t pin)
 {
-    uint8_t port = digitalPinToPort(pin);
-    if (port > 2) return;
-    if(digitalRead(pin) == LOW) {
-        digitalWrite(pin, HIGH);
-    } else {
+	  volatile uint32_t *out;
+	  uint8_t bitmask = digitalPinToBitMask(pin);
+	  uint8_t port = digitalPinToPort(pin);
+	  if (port > 2) return;
+    out = portOutputRegister(port);
+    if((*out) & (0x1UL << bitmask)) {
         digitalWrite(pin, LOW);
+    } else {
+        digitalWrite(pin, HIGH);
     }
 }

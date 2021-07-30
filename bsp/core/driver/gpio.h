@@ -55,9 +55,9 @@ typedef enum{
 
 typedef enum{
     GPIO_INPUT = 0, /*上拉输入*/
+		GPIO_OUTPUT,
     GPIO_INPUT_PULLUP,   /*下拉输入*/
     GPIO_INPUT_PULLDOWN,     /*浮空输入*/
-	  GPIO_OUTPUT
 }GPIO_InputMode_TypeDef;
 
 /* ---------------------------------------------------------------------------------------------------
@@ -170,4 +170,5 @@ void gpio_fun_sel(uint8_t num, uint8_t sel);
 void gpio_mode_config(uint8_t pin, uint8_t type);
 void gpio_output_high(uint8_t num);
 void gpio_output_low(uint8_t num);
+uint8_t gpio_input_val(uint8_t pin);
 #endif
