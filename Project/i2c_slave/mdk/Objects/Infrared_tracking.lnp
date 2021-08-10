@@ -1,0 +1,13 @@
+--cpu Cortex-M0
+".\objects\core_cm0.o"
+".\objects\startup_xinc.o"
+".\objects\system.o"
+".\objects\main.o"
+".\objects\gpio.o"
+".\objects\uart.o"
+".\objects\board.o"
+".\objects\i2c.o"
+--strict --scatter "..\..\..\bsp\core\startup\cpu.scat"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\Infrared_tracking.map" -o .\Objects\Infrared_tracking.axf

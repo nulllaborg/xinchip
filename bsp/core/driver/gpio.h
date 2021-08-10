@@ -55,7 +55,7 @@ typedef enum{
 
 typedef enum{
     GPIO_INPUT = 0, /*上拉输入*/
-		GPIO_OUTPUT,
+	GPIO_OUTPUT,
     GPIO_INPUT_PULLUP,   /*下拉输入*/
     GPIO_INPUT_PULLDOWN,     /*浮空输入*/
 }GPIO_InputMode_TypeDef;

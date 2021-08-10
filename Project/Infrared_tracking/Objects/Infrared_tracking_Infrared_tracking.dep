@@ -1,128 +1,0 @@
-Dependencies for Project 'Infrared_tracking', Target 'Infrared_tracking': (DO NOT MODIFY !)
-F (.\startup\core_cm0.c)(0x60A5CBFC)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I.\bsp -I.\Include -I.\startup -I.\application -I.\system_software-I C:\Users\Administrator\Desktop\Infrared_tracking\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\core_cm0.o --omf_browse .\objects\core_cm0.crf --depend .\objects\core_cm0.d)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-F (.\startup\system_xinc.c)(0x60A5CBFC)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I.\bsp -I.\Include -I.\startup -I.\application -I.\system_software-I C:\Users\Administrator\Desktop\Infrared_tracking\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\system_xinc.o --omf_browse .\objects\system_xinc.crf --depend .\objects\system_xinc.d)
-F (.\startup\startup_xinc.s)(0x60A5CBFC)(--cpu Cortex-M0 --li --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Users\Administrator\Desktop\Infrared_tracking\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 514" --pd "ARMCM0 SETA 1"--list .\listings\startup_xinc.lst --xref -o .\objects\startup_xinc.o --depend .\objects\startup_xinc.d)
-F (.\bsp\bsp_gpio.c)(0x6110812F)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I.\bsp -I.\Include -I.\startup -I.\application -I.\system_software-I C:\Users\Administrator\Desktop\Infrared_tracking\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\bsp_gpio.o --omf_browse .\objects\bsp_gpio.crf --depend .\objects\bsp_gpio.d)
-I (.\Include\Platform.h)(0x6111CD57)
-I (.\startup\xinc_m0.h)(0x60A5CBFC)
-I (.\startup\core_cm0.h)(0x60A5CBFC)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (.\startup\core_cmInstr.h)(0x60A5CBFC)
-I (.\startup\core_cmFunc.h)(0x60A5CBFC)
-I (.\startup\xinc_reg.h)(0x60A5CBFC)
-I (.\startup\xinc_map.h)(0x60A5CBFC)
-I (.\bsp\bsp_register_macro.h)(0x60A5CBFC)
-I (.\application\Infrared_core.h)(0x6111E3D6)
-I (.\system_software\Infrared.h)(0x6111DF36)
-I (.\bsp\bsp_gpio.h)(0x60A5CBFC)
-I (.\bsp\bsp_uart.h)(0x60A5CBFC)
-I (.\bsp\bsp_i2c_master.h)(0x5EB60E44)
-I (.\bsp\bsp_i2c_slave.h)(0x6110F0A7)
-I (E:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-F (.\bsp\bsp_retarget.c)(0x60A5CBFC)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I.\bsp -I.\Include -I.\startup -I.\application -I.\system_software-I C:\Users\Administrator\Desktop\Infrared_tracking\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\bsp_retarget.o --omf_browse .\objects\bsp_retarget.crf --depend .\objects\bsp_retarget.d)
-I (bsp\Includes.h)(0x60A5CBFC)
-I (.\startup\xinc_m0.h)(0x60A5CBFC)
-I (.\startup\core_cm0.h)(0x60A5CBFC)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (.\startup\core_cmInstr.h)(0x60A5CBFC)
-I (.\startup\core_cmFunc.h)(0x60A5CBFC)
-I (.\startup\xinc_reg.h)(0x60A5CBFC)
-I (.\startup\xinc_map.h)(0x60A5CBFC)
-I (E:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-F (.\bsp\bsp_i2c_master.c)(0x60E702DE)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I.\bsp -I.\Include -I.\startup -I.\application -I.\system_software-I C:\Users\Administrator\Desktop\Infrared_tracking\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\bsp_i2c_master.o --omf_browse .\objects\bsp_i2c_master.crf --depend .\objects\bsp_i2c_master.d)
-I (.\Include\Platform.h)(0x6111CD57)
-I (.\startup\xinc_m0.h)(0x60A5CBFC)
-I (.\startup\core_cm0.h)(0x60A5CBFC)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (.\startup\core_cmInstr.h)(0x60A5CBFC)
-I (.\startup\core_cmFunc.h)(0x60A5CBFC)
-I (.\startup\xinc_reg.h)(0x60A5CBFC)
-I (.\startup\xinc_map.h)(0x60A5CBFC)
-I (.\bsp\bsp_register_macro.h)(0x60A5CBFC)
-I (.\application\Infrared_core.h)(0x6111E3D6)
-I (.\system_software\Infrared.h)(0x6111DF36)
-I (.\bsp\bsp_gpio.h)(0x60A5CBFC)
-I (.\bsp\bsp_uart.h)(0x60A5CBFC)
-I (.\bsp\bsp_i2c_master.h)(0x5EB60E44)
-I (.\bsp\bsp_i2c_slave.h)(0x6110F0A7)
-I (E:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-F (.\bsp\bsp_i2c_slave.c)(0x6111E75F)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I.\bsp -I.\Include -I.\startup -I.\application -I.\system_software-I C:\Users\Administrator\Desktop\Infrared_tracking\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\bsp_i2c_slave.o --omf_browse .\objects\bsp_i2c_slave.crf --depend .\objects\bsp_i2c_slave.d)
-I (.\Include\Platform.h)(0x6111CD57)
-I (.\startup\xinc_m0.h)(0x60A5CBFC)
-I (.\startup\core_cm0.h)(0x60A5CBFC)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (.\startup\core_cmInstr.h)(0x60A5CBFC)
-I (.\startup\core_cmFunc.h)(0x60A5CBFC)
-I (.\startup\xinc_reg.h)(0x60A5CBFC)
-I (.\startup\xinc_map.h)(0x60A5CBFC)
-I (.\bsp\bsp_register_macro.h)(0x60A5CBFC)
-I (.\application\Infrared_core.h)(0x6111E3D6)
-I (.\system_software\Infrared.h)(0x6111DF36)
-I (.\bsp\bsp_gpio.h)(0x60A5CBFC)
-I (.\bsp\bsp_uart.h)(0x60A5CBFC)
-I (.\bsp\bsp_i2c_master.h)(0x5EB60E44)
-I (.\bsp\bsp_i2c_slave.h)(0x6110F0A7)
-I (E:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-F (.\bsp\bsp_uart.c)(0x6111E297)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I.\bsp -I.\Include -I.\startup -I.\application -I.\system_software-I C:\Users\Administrator\Desktop\Infrared_tracking\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\bsp_uart.o --omf_browse .\objects\bsp_uart.crf --depend .\objects\bsp_uart.d)
-I (.\Include\Platform.h)(0x6111CD57)
-I (.\startup\xinc_m0.h)(0x60A5CBFC)
-I (.\startup\core_cm0.h)(0x60A5CBFC)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (.\startup\core_cmInstr.h)(0x60A5CBFC)
-I (.\startup\core_cmFunc.h)(0x60A5CBFC)
-I (.\startup\xinc_reg.h)(0x60A5CBFC)
-I (.\startup\xinc_map.h)(0x60A5CBFC)
-I (.\bsp\bsp_register_macro.h)(0x60A5CBFC)
-I (.\application\Infrared_core.h)(0x6111E3D6)
-I (.\system_software\Infrared.h)(0x6111DF36)
-I (.\bsp\bsp_gpio.h)(0x60A5CBFC)
-I (.\bsp\bsp_uart.h)(0x60A5CBFC)
-I (.\bsp\bsp_i2c_master.h)(0x5EB60E44)
-I (.\bsp\bsp_i2c_slave.h)(0x6110F0A7)
-I (E:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-F (.\Include\Platform.h)(0x6111CD57)()
-F (.\application\main.c)(0x6111E918)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I.\bsp -I.\Include -I.\startup -I.\application -I.\system_software-I C:\Users\Administrator\Desktop\Infrared_tracking\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (.\Include\platform.h)(0x6111CD57)
-I (.\startup\xinc_m0.h)(0x60A5CBFC)
-I (.\startup\core_cm0.h)(0x60A5CBFC)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (.\startup\core_cmInstr.h)(0x60A5CBFC)
-I (.\startup\core_cmFunc.h)(0x60A5CBFC)
-I (.\startup\xinc_reg.h)(0x60A5CBFC)
-I (.\startup\xinc_map.h)(0x60A5CBFC)
-I (.\bsp\bsp_register_macro.h)(0x60A5CBFC)
-I (.\application\Infrared_core.h)(0x6111E3D6)
-I (.\system_software\Infrared.h)(0x6111DF36)
-I (.\bsp\bsp_gpio.h)(0x60A5CBFC)
-I (.\bsp\bsp_uart.h)(0x60A5CBFC)
-I (.\bsp\bsp_i2c_master.h)(0x5EB60E44)
-I (.\bsp\bsp_i2c_slave.h)(0x6110F0A7)
-I (E:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-F (.\application\Infrared_core.c)(0x6111E527)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I.\bsp -I.\Include -I.\startup -I.\application -I.\system_software-I C:\Users\Administrator\Desktop\Infrared_tracking\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\infrared_core.o --omf_browse .\objects\infrared_core.crf --depend .\objects\infrared_core.d)
-I (.\Include\platform.h)(0x6111CD57)
-I (.\startup\xinc_m0.h)(0x60A5CBFC)
-I (.\startup\core_cm0.h)(0x60A5CBFC)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (.\startup\core_cmInstr.h)(0x60A5CBFC)
-I (.\startup\core_cmFunc.h)(0x60A5CBFC)
-I (.\startup\xinc_reg.h)(0x60A5CBFC)
-I (.\startup\xinc_map.h)(0x60A5CBFC)
-I (.\bsp\bsp_register_macro.h)(0x60A5CBFC)
-I (.\application\Infrared_core.h)(0x6111E3D6)
-I (.\system_software\Infrared.h)(0x6111DF36)
-I (.\bsp\bsp_gpio.h)(0x60A5CBFC)
-I (.\bsp\bsp_uart.h)(0x60A5CBFC)
-I (.\bsp\bsp_i2c_master.h)(0x5EB60E44)
-I (.\bsp\bsp_i2c_slave.h)(0x6110F0A7)
-I (E:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-F (.\system_software\Infrared.c)(0x6111DF3F)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I.\bsp -I.\Include -I.\startup -I.\application -I.\system_software-I C:\Users\Administrator\Desktop\Infrared_tracking\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\infrared.o --omf_browse .\objects\infrared.crf --depend .\objects\infrared.d)
-I (system_software\Infrared.h)(0x6111DF36)
-I (.\bsp\bsp_gpio.h)(0x60A5CBFC)
-I (.\startup\xinc_m0.h)(0x60A5CBFC)
-I (.\startup\core_cm0.h)(0x60A5CBFC)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (.\startup\core_cmInstr.h)(0x60A5CBFC)
-I (.\startup\core_cmFunc.h)(0x60A5CBFC)
-I (.\startup\xinc_reg.h)(0x60A5CBFC)
-I (.\startup\xinc_map.h)(0x60A5CBFC)
