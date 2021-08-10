@@ -1,5 +1,7 @@
-nulllab推出基于xc620芯片的开发板
-芯片特点
+本项目[代码规范](https://github.com/nulllaborg/c-code-style/blob/master/README_zh.md)
+
+nulllab推出基于国产蓝牙芯片xc620的开发板
+## 特点
 - 蓝牙4.2
 - ARM-CortexM0 32M主频,128K ram,256K flash
 - 2路Uart(Uart0带流控)
