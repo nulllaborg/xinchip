@@ -1,0 +1,10 @@
+.\objects\infrared.o: system_software\Infrared.c
+.\objects\infrared.o: system_software\Infrared.h
+.\objects\infrared.o: .\bsp\bsp_gpio.h
+.\objects\infrared.o: .\startup\xinc_m0.h
+.\objects\infrared.o: .\startup\core_cm0.h
+.\objects\infrared.o: E:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\infrared.o: .\startup\core_cmInstr.h
+.\objects\infrared.o: .\startup\core_cmFunc.h
+.\objects\infrared.o: .\startup\xinc_reg.h
+.\objects\infrared.o: .\startup\xinc_map.h

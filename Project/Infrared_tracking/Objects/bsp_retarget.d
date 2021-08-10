@@ -1,0 +1,10 @@
+.\objects\bsp_retarget.o: bsp\bsp_retarget.c
+.\objects\bsp_retarget.o: bsp\Includes.h
+.\objects\bsp_retarget.o: .\startup\xinc_m0.h
+.\objects\bsp_retarget.o: .\startup\core_cm0.h
+.\objects\bsp_retarget.o: E:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bsp_retarget.o: .\startup\core_cmInstr.h
+.\objects\bsp_retarget.o: .\startup\core_cmFunc.h
+.\objects\bsp_retarget.o: .\startup\xinc_reg.h
+.\objects\bsp_retarget.o: .\startup\xinc_map.h
+.\objects\bsp_retarget.o: E:\keil\ARM\ARMCC\Bin\..\include\stdio.h
