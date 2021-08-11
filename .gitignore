@@ -1,6 +1,8 @@
 *.o
 *.p
+/Listings
+/Objects/
 /Project/led/mdk/Listings/
 /Project/led/mdk/Objects/
 /Project/i2c_slave/mdk/Listings/
-/Project/i2c_slave/mdk/Objects/
+/Project/i2c_slave/mdk
