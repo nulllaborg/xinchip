@@ -91,11 +91,13 @@ void UART0_Handler(void)
 
 void UART1_Handler(void)
 {
-    uint32_t uart1_isr_status = 0;
-		readReg32(UART1_IIR , uart1_isr_status);
-  	uart1_isr_status &= 0x0F;
-		if (uHandler_Callback[1] != (uHandler_callback)0)
-			(uHandler_Callback[1])(uart1_isr_status);
+	uint32_t uart1_isr_status = 0;
+	readReg32(UART1_IIR , uart1_isr_status);
+	uart1_isr_status &= 0x0F;
+	if((uart1_isr_status != 0x04) && (uart1_isr_status != 0x0c)) return;
+	readReg32(UART1_RBR , uart1_isr_status);
+	if (uHandler_Callback[1] != (uHandler_callback)0)
+	(uHandler_Callback[1])(uart1_isr_status);
 }
 
 void uart_send_char(uint8_t ch, uint8_t c)

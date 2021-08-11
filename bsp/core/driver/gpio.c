@@ -123,35 +123,38 @@ void init_gpio(void)
 
 void gpio_output_high(uint8_t pin)
 {
-	  volatile uint32_t *out;
-	  uint8_t bitmask = digitalPinToBitMask(pin);
-	  uint8_t port = digitalPinToPort(pin);
-	  if (port > 2) return;
-    out = portOutputRegister(port);
-    writeReg32(out, (0x00010001 << bitmask));
+	volatile uint32_t *out;
+	uint8_t bitmask = digitalPinToBitMask(pin);
+	uint8_t port = digitalPinToPort(pin);
+	if (port > 2) return;
+	out = portOutputRegister(port);
+	writeReg32(out, (0x00010001 << bitmask));
 }
 
 void gpio_output_low(uint8_t pin)
 {
-		volatile uint32_t *out;
-	  uint8_t port = digitalPinToPort(pin);
-		uint8_t bitmask = digitalPinToBitMask(pin);
-	  if (port > 2) return;
-    out = portOutputRegister(port);
-    writeReg32(out, (0x00010000 << bitmask));
+	volatile uint32_t *out;
+	uint8_t port = digitalPinToPort(pin);
+	uint8_t bitmask = digitalPinToBitMask(pin);
+	if (port > 2) return;
+	out = portOutputRegister(port);
+	writeReg32(out, (0x00010000 << bitmask));
 }
 
 uint8_t gpio_input_val(uint8_t pin)
 {
-	  volatile uint32_t *read_reg;
-		uint32_t val;
-	  uint8_t port = digitalPinToPort(pin);
-	  uint8_t bitmask = digitalPinToBitMask(pin);
-		if (port > 2) return 0;
-	  read_reg = portInputRegister(port);
-		readReg32(read_reg, val);
-	  if (val & bit(bitmask)) return HIGH;
-	  else return LOW;
+	volatile uint32_t *read_reg;
+	uint32_t val;
+	uint8_t port = digitalPinToPort(pin);
+	uint8_t bitmask = digitalPinToBitMask(pin);
+	if (port > 2) 
+		return 0;
+	read_reg = portInputRegister(port);
+	readReg32(read_reg, val);
+	if (val & bit(bitmask)) 
+		return HIGH;
+	else 
+		return LOW;
 }
 
 void gpio_mode_config(uint8_t pin, uint8_t mode)
