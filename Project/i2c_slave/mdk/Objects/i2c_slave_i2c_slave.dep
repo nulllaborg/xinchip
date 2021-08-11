@@ -1,126 +1,0 @@
-Dependencies for Project 'i2c_slave', Target 'i2c_slave': (DO NOT MODIFY !)
-F (..\..\..\bsp\core\startup\core_cm0.c)(0x611294F7)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I..\..\..\bsp\core\startup -I..\..\..\bsp\core -I..\..\..\bsp\variants\standard -I..\..\..\bsp\core\driver -I..\..\..\bsp\variants\xc620-I F:\Tom\Github_tom\xinchip\Project\i2c_slave\mdk\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\core_cm0.o --omf_browse .\objects\core_cm0.crf --depend .\objects\core_cm0.d)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-F (..\..\..\bsp\core\startup\startup_xinc.s)(0x611294F7)(--cpu Cortex-M0 --li --pd "__EVAL SETA 1" -g --apcs=interwork -I F:\Tom\Github_tom\xinchip\Project\i2c_slave\mdk\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 514" --pd "ARMCM0 SETA 1"--list .\listings\startup_xinc.lst --xref -o .\objects\startup_xinc.o --depend .\objects\startup_xinc.d)
-F (..\..\..\bsp\core\driver\system.c)(0x61121920)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I..\..\..\bsp\core\startup -I..\..\..\bsp\core -I..\..\..\bsp\variants\standard -I..\..\..\bsp\core\driver -I..\..\..\bsp\variants\xc620-I F:\Tom\Github_tom\xinchip\Project\i2c_slave\mdk\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\system.o --omf_browse .\objects\system.crf --depend .\objects\system.d)
-I (..\..\..\bsp\core\driver\system.h)(0x6111EA62)
-I (..\..\..\bsp\core\board.h)(0x61126D7B)
-I (..\..\..\bsp\variants\xc620\xc620.h)(0x611294F7)
-I (..\..\..\bsp\variants\standard\xc6x0.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\xinc_m0.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\core_cm0.h)(0x611294F7)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (..\..\..\bsp\core\startup\core_cmInstr.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\core_cmFunc.h)(0x611294F7)
-I (..\..\..\bsp\core\driver\gpio.h)(0x6112226D)
-I (..\..\..\bsp\core\driver\uart.h)(0x6111EA62)
-I (..\..\..\bsp\core\driver\i2c.h)(0x61128D52)
-I (..\..\..\bsp\core\Arduino.h)(0x611294F7)
-I (E:\keil\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
-I (E:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
-I (E:\keil\ARM\ARMCC\include\string.h)(0x5D9AD218)
-I (E:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
-I (..\..\..\bsp\core\binary.h)(0x611294F7)
-I (..\..\..\bsp\core\pins_arduino.h)(0x611294F7)
-F (..\app\main.c)(0x61129693)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I..\..\..\bsp\core\startup -I..\..\..\bsp\core -I..\..\..\bsp\variants\standard -I..\..\..\bsp\core\driver -I..\..\..\bsp\variants\xc620-I F:\Tom\Github_tom\xinchip\Project\i2c_slave\mdk\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (E:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-I (E:\keil\ARM\ARMCC\include\string.h)(0x5D9AD218)
-I (..\..\..\bsp\core\board.h)(0x61126D7B)
-I (..\..\..\bsp\core\driver\system.h)(0x6111EA62)
-I (..\..\..\bsp\variants\xc620\xc620.h)(0x611294F7)
-I (..\..\..\bsp\variants\standard\xc6x0.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\xinc_m0.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\core_cm0.h)(0x611294F7)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (..\..\..\bsp\core\startup\core_cmInstr.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\core_cmFunc.h)(0x611294F7)
-I (..\..\..\bsp\core\driver\gpio.h)(0x6112226D)
-I (..\..\..\bsp\core\driver\uart.h)(0x6111EA62)
-I (..\..\..\bsp\core\driver\i2c.h)(0x61128D52)
-I (..\..\..\bsp\core\Arduino.h)(0x611294F7)
-I (E:\keil\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
-I (E:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
-I (E:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
-I (..\..\..\bsp\core\binary.h)(0x611294F7)
-I (..\..\..\bsp\core\pins_arduino.h)(0x611294F7)
-F (..\..\..\bsp\core\driver\gpio.c)(0x61123C1E)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I..\..\..\bsp\core\startup -I..\..\..\bsp\core -I..\..\..\bsp\variants\standard -I..\..\..\bsp\core\driver -I..\..\..\bsp\variants\xc620-I F:\Tom\Github_tom\xinchip\Project\i2c_slave\mdk\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
-I (..\..\..\bsp\core\board.h)(0x61126D7B)
-I (..\..\..\bsp\core\driver\system.h)(0x6111EA62)
-I (..\..\..\bsp\variants\xc620\xc620.h)(0x611294F7)
-I (..\..\..\bsp\variants\standard\xc6x0.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\xinc_m0.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\core_cm0.h)(0x611294F7)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (..\..\..\bsp\core\startup\core_cmInstr.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\core_cmFunc.h)(0x611294F7)
-I (..\..\..\bsp\core\driver\gpio.h)(0x6112226D)
-I (..\..\..\bsp\core\driver\uart.h)(0x6111EA62)
-I (..\..\..\bsp\core\driver\i2c.h)(0x61128D52)
-I (..\..\..\bsp\core\Arduino.h)(0x611294F7)
-I (E:\keil\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
-I (E:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
-I (E:\keil\ARM\ARMCC\include\string.h)(0x5D9AD218)
-I (E:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
-I (..\..\..\bsp\core\binary.h)(0x611294F7)
-I (..\..\..\bsp\core\pins_arduino.h)(0x611294F7)
-F (..\..\..\bsp\core\driver\uart.c)(0x61124D2C)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I..\..\..\bsp\core\startup -I..\..\..\bsp\core -I..\..\..\bsp\variants\standard -I..\..\..\bsp\core\driver -I..\..\..\bsp\variants\xc620-I F:\Tom\Github_tom\xinchip\Project\i2c_slave\mdk\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
-I (..\..\..\bsp\core\driver\system.h)(0x6111EA62)
-I (..\..\..\bsp\core\driver\gpio.h)(0x6112226D)
-I (..\..\..\bsp\core\board.h)(0x61126D7B)
-I (..\..\..\bsp\variants\xc620\xc620.h)(0x611294F7)
-I (..\..\..\bsp\variants\standard\xc6x0.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\xinc_m0.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\core_cm0.h)(0x611294F7)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (..\..\..\bsp\core\startup\core_cmInstr.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\core_cmFunc.h)(0x611294F7)
-I (..\..\..\bsp\core\driver\uart.h)(0x6111EA62)
-I (..\..\..\bsp\core\driver\i2c.h)(0x61128D52)
-I (..\..\..\bsp\core\Arduino.h)(0x611294F7)
-I (E:\keil\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
-I (E:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
-I (E:\keil\ARM\ARMCC\include\string.h)(0x5D9AD218)
-I (E:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
-I (..\..\..\bsp\core\binary.h)(0x611294F7)
-I (..\..\..\bsp\core\pins_arduino.h)(0x611294F7)
-F (..\..\..\bsp\core\board.c)(0x61126944)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I..\..\..\bsp\core\startup -I..\..\..\bsp\core -I..\..\..\bsp\variants\standard -I..\..\..\bsp\core\driver -I..\..\..\bsp\variants\xc620-I F:\Tom\Github_tom\xinchip\Project\i2c_slave\mdk\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\board.o --omf_browse .\objects\board.crf --depend .\objects\board.d)
-I (E:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-I (..\..\..\bsp\core\board.h)(0x61126D7B)
-I (..\..\..\bsp\core\driver\system.h)(0x6111EA62)
-I (..\..\..\bsp\variants\xc620\xc620.h)(0x611294F7)
-I (..\..\..\bsp\variants\standard\xc6x0.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\xinc_m0.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\core_cm0.h)(0x611294F7)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (..\..\..\bsp\core\startup\core_cmInstr.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\core_cmFunc.h)(0x611294F7)
-I (..\..\..\bsp\core\driver\gpio.h)(0x6112226D)
-I (..\..\..\bsp\core\driver\uart.h)(0x6111EA62)
-I (..\..\..\bsp\core\driver\i2c.h)(0x61128D52)
-I (..\..\..\bsp\core\Arduino.h)(0x611294F7)
-I (E:\keil\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
-I (E:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
-I (E:\keil\ARM\ARMCC\include\string.h)(0x5D9AD218)
-I (E:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
-I (..\..\..\bsp\core\binary.h)(0x611294F7)
-I (..\..\..\bsp\core\pins_arduino.h)(0x611294F7)
-F (..\..\..\bsp\core\driver\i2c.c)(0x6112900C)(--c99 -c --cpu Cortex-M0 -D__EVAL --li -g -O3 --apcs=interwork --split_sections -I..\..\..\bsp\core\startup -I..\..\..\bsp\core -I..\..\..\bsp\variants\standard -I..\..\..\bsp\core\driver -I..\..\..\bsp\variants\xc620-I F:\Tom\Github_tom\xinchip\Project\i2c_slave\mdk\RTE-I E:\keil\pack\ARM\CMSIS\5.6.0\Device\ARM\ARMCM0\Include-I E:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DARMCM0-o .\objects\i2c.o --omf_browse .\objects\i2c.crf --depend .\objects\i2c.d)
-I (..\..\..\bsp\core\driver\i2c.h)(0x61128D52)
-I (..\..\..\bsp\core\board.h)(0x61126D7B)
-I (..\..\..\bsp\core\driver\system.h)(0x6111EA62)
-I (..\..\..\bsp\variants\xc620\xc620.h)(0x611294F7)
-I (..\..\..\bsp\variants\standard\xc6x0.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\xinc_m0.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\core_cm0.h)(0x611294F7)
-I (E:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (..\..\..\bsp\core\startup\core_cmInstr.h)(0x611294F7)
-I (..\..\..\bsp\core\startup\core_cmFunc.h)(0x611294F7)
-I (..\..\..\bsp\core\driver\gpio.h)(0x6112226D)
-I (..\..\..\bsp\core\driver\uart.h)(0x6111EA62)
-I (..\..\..\bsp\core\Arduino.h)(0x611294F7)
-I (E:\keil\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
-I (E:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
-I (E:\keil\ARM\ARMCC\include\string.h)(0x5D9AD218)
-I (E:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
-I (..\..\..\bsp\core\binary.h)(0x611294F7)
-I (..\..\..\bsp\core\pins_arduino.h)(0x611294F7)
