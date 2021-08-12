@@ -1,13 +1,15 @@
 本项目[代码规范](https://github.com/nulllaborg/c-code-style/blob/master/README_zh.md)
 
-nulllab推出基于国产蓝牙芯片xc620的开发板
+nulllab推出基于国产蓝牙芯片EV6050的开发板
 ## 特点
 - 蓝牙4.2
 - ARM-CortexM0 32M主频,128K ram,256K flash
 - 2路Uart(Uart0带流控)
 - 8路10bit ADC
 - 1路SPI
+- 1路I2C
 - 6路PWM
+- 最多19个GPIO
 
 ## 基础示例程序
 
