@@ -12,7 +12,9 @@ nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片�
 - 2路Uart(Uart0带流控)
 - 8路10bit ADC
 - 1路SPI
+- 1路I2C
 - 6路PWM
+- 最多19个GPIO
 
 ## 基础示例程序
 
