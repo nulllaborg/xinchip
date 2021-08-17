@@ -5,6 +5,9 @@ uint8_t xc_buffer[42]={0xE6,0xE7,0xE7,0xE7,0xE7};
 uint8_t spi_sck, spi_dat, spi_cs;
 
 #ifdef SPI_SOFTWARE
+#define SPI_CS_HIGHT     	    while(((*(SSI1_STS))&0x05)!=0x04);gpio_output_high(0)
+#define SPI_CS_LOW   		    while(((*(SSI1_STS))&0x05)!=0x04);gpio_output_low(0)
+
 void spi_init(uint8_t sck, uint8_t dat, uint8_t cs)
 {
 	gpio_mux_ctl(sck, 0);
@@ -25,6 +28,7 @@ void spi_init(uint8_t sck, uint8_t dat, uint8_t cs)
 	gpio_output_low(sck);
 	gpio_output_low(cs);;
 }
+
 void spi_write(uint8_t data)
 {
 	  gpio_mode_config(spi_dat, GPIO_OUTPUT);
@@ -40,11 +44,12 @@ void spi_write(uint8_t data)
     SPI_DATA_High;
     SCK_Low;
 }
+
 unsigned char spi_read(void)
 {  
     gpio_mode_config(spi_dat, GPIO_INPUT);;
     unsigned char data = 0;
-    for(unsigned char  i = 0; i < 8; i++)
+    for(unsigned char i = 0; i < 8; i++)
     {
         SCK_Low;
         data = data << 1;
@@ -58,8 +63,24 @@ unsigned char spi_read(void)
 
 #else
 
-#define SPI_CS_HIGHT     	    while(((*(SSI1_STS))&0x05)!=0x04);gpio_output_high(0)
-#define SPI_CS_LOW   		    while(((*(SSI1_STS))&0x05)!=0x04);gpio_output_low(0)
+void spi_mosi(uint8_t pin, uint8_t mode, uint8_t freq)
+{
+    gpio_mux_ctl(pin, 0);
+		gpio_fun_inter(pin, 0);
+		gpio_fun_sel(pin, SSI1_TX);
+	
+    writeReg32(CPR_SPIx_MCLK_CTL(1), 0x110010);//1分频			//- spi(x)_mclk = 32Mhz(When TXCO=32Mhz).
+    writeReg32(CPR_CTLAPBCLKEN_GRCTL , (0x1000100<<1)); 	//- 打开spi(x) pclk.
+    writeReg32(CPR_SSI_CTRL, 0x30); // Master SPI PROTOCOL
+    writeReg32(SSIx_EN(1), 0x00);   // disable SSI1
+    writeReg32(SSIx_IE(1), 0x00);
+    writeReg32(SSIx_CTRL0(1) , SPI_TMODE_TX | mode | SPI_MOTOROLA_PROTOCOL | 0x07);					/* 8bit SPI data */
+    writeReg32(SSIx_SE(1), 0x01);
+    writeReg32(SSIx_BAUD(1), freq);			//- spix_mclk 分频.
+
+    writeReg32(SSIx_TXFTL(1), 0x00);
+    writeReg32(SSIx_EN(1) , 0x01);
+}
 
 void init_spi_master(uint8_t cs, uint8_t sclk, uint8_t miso, uint8_t mosi, uint8_t mode)
 {
@@ -71,7 +92,7 @@ void init_spi_master(uint8_t cs, uint8_t sclk, uint8_t miso, uint8_t mosi, uint8
     writeReg32(CPR_SSI_CTRL, val);
     writeReg32(SSIx_EN(1), 0x00);
     writeReg32(SSIx_IE(1), 0x00);
-    writeReg32(SSIx_CTRL0(1) , 0xC7);					/* 8bit SPI data */
+    writeReg32(SSIx_CTRL0(1) , SPI_TMODE_TX | mode | SPI_MOTOROLA_PROTOCOL | 0x07);					/* 8bit SPI data */
     writeReg32(SSIx_SE(1), 0x01);
     writeReg32(SSIx_BAUD(1), SPIM_CLK_16MHZ);			//- spix_mclk 分频.
 
@@ -99,20 +120,18 @@ void init_spi_master(uint8_t cs, uint8_t sclk, uint8_t miso, uint8_t mosi, uint8
     gpio_mux_ctl(mosi,0);
 		gpio_fun_inter(mosi,0);
 		gpio_fun_sel(mosi, SSI1_TX);
-
 }
 
 uint8_t spi_write(uint8_t dat)
 {   
 	writeReg32(SSI1_DATA, dat);
-	while(((*(SSI1_STS))&0xC)!=0xC);
+	while(((*(SSI1_STS)) & 0x5) != 0x5);
 	return (*(SSI1_DATA));
 }
 
 uint8_t spi_read(void)
 {
-    writeReg32(SSI1_DATA, 0xFF);
-    while(((*(SSI1_STS))&0xC)!=0xC);
+    while(((*(SSI1_STS))&0x11) != 0x11);
     return (*(SSI1_DATA));
 }
 
@@ -122,8 +141,9 @@ uint8_t spi_read_buf(uint8_t reg, uint8_t *pBuf, uint8_t length)
 {
   	CS_Low;                    		                                    
   	spi_write(reg);       		                                          
-  	for(unsigned char  byte_ctr=0;byte_ctr<length;byte_ctr++)                                
-    pBuf[byte_ctr] = spi_read();                                          
+  	for (unsigned char byte_ctr = 0; byte_ctr < length; byte_ctr++) {
+        pBuf[byte_ctr] = spi_read();
+		}
   	CS_High;
 	
 	return *pBuf; 
@@ -133,7 +153,8 @@ void spi_write_buf(uint8_t reg, uint8_t *pBuf, uint8_t len)
 {
     CS_Low;
     spi_write(reg);
-    for(unsigned char  j = 0;j < len; j++)
+    for (unsigned char j = 0; j < len; j++) {
         spi_write(pBuf[j]);
+		}
     CS_High;
 }

@@ -94,10 +94,12 @@ void analogReference(uint8_t mode);
 void analogWrite(uint8_t, uint8_t);
 void analogReadResolution(uint8_t);
 
-unsigned long millis(void);
-unsigned long micros(void);
+uint32_t millis(void);
+uint32_t micros(void);
+
 void delay(unsigned long);
 void delayMicroseconds(unsigned int us);
+
 unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout);
 unsigned long pulseInLong(uint8_t pin, uint8_t state, unsigned long timeout);
 

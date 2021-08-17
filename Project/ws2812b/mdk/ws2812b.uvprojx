@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>base-led</TargetName>
+      <TargetName>ws2812b</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
@@ -47,7 +47,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>base-led</OutputName>
+          <OutputName>ws2812b</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -81,7 +81,7 @@
             <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>1</RunUserProg2>
             <UserProg1Name>fromelf --bin --output=s.bin !L</UserProg1Name>
-            <UserProg2Name>Xincboot_tool s.bin base-led.bin</UserProg2Name>
+            <UserProg2Name>Xincboot_tool s.bin ws2812b.bin</UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
           </AfterMake>
@@ -433,6 +433,26 @@
               <FileType>1</FileType>
               <FilePath>..\app\main.c</FilePath>
             </File>
+            <File>
+              <FileName>HardwareSerial.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\bsp\core\HardwareSerial.c</FilePath>
+            </File>
+            <File>
+              <FileName>HardwareSerial1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\bsp\core\HardwareSerial1.c</FilePath>
+            </File>
+            <File>
+              <FileName>ringbuffer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\bsp\core\ringbuffer.c</FilePath>
+            </File>
+            <File>
+              <FileName>ws2812b.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\app\ws2812b.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -447,6 +467,16 @@
               <FileName>board.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\bsp\core\board.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\bsp\core\driver\uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\bsp\core\driver\spi.c</FilePath>
             </File>
           </Files>
         </Group>
