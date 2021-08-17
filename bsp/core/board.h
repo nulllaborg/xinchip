@@ -6,6 +6,7 @@
 #define ENABLE_TIMER 0
 #define ENABLE_GPIO  1
 #define ENABLE_I2C   1
+#define ENABLE_SPI   1
 #define ENABLE_GPADC 0
 #define ENABLE_UART0 1
 #define ENABLE_UART1 1
@@ -20,6 +21,10 @@
 
 #ifdef ENABLE_GPIO
 #include "i2c.h"
+#endif
+
+#ifdef ENABLE_SPI
+#include "spi.h"
 #endif
 
 void board_init(void);

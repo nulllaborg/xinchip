@@ -27,7 +27,7 @@
 //#define SPIM_CLK_32MHZ 			1 
 
 //#define SPI_SOFTWARE
-
+#define SPI_HARDWARE
 #define SPI_SCK_GPIO_PIN          3
 #define SPI_DATA_GPIO_PIN         25
 #define SPI_CS_GPIO_PIN           24
@@ -49,7 +49,7 @@
 
 #define CS_B_Low		          do{while(((*(SSI1_STS))&0x05)!=0x04);gpio_output_low(26);}while(0)   //gpio 26
 #define CS_B_High		          do{while(((*(SSI1_STS))&0x05)!=0x04);gpio_output_high(26);}while(0) //gpio 26
-#define CS_B_Output	          gpio_direction_output(26)
+#define CS_B_Output	          	  gpio_direction_output(26)
 
 //#define CE_Low					do{ unsigned short cfg_otp;	XC_Read_Buf(CFG_TOP,(uint8_t*)&cfg_otp,2); clrbit(cfg_otp,14);XC_Write_Buf(W_REG | CFG_TOP,(uint8_t *)&cfg_otp,2);}while(0)
 //#define CE_High					do{	unsigned short cfg_otp; XC_Read_Buf(CFG_TOP,(uint8_t*)&cfg_otp,2); setbit(cfg_otp,14);XC_Write_Buf(W_REG | CFG_TOP,(uint8_t *)&cfg_otp,2);}while(0)
@@ -59,6 +59,21 @@
 
 #define CE_Output     gpio_direction_output(23)
 
+#define SPI_CS_HIGHT     	    while(((*(SSI1_STS))&0x05)!=0x04);gpio_output_high(0)
+#define SPI_CS_LOW   		    while(((*(SSI1_STS))&0x05)!=0x04);gpio_output_low(0)
+
+#ifdef SPI_SOFTWARE
 void spi_mosi(uint8_t pin, uint8_t mode, uint8_t freq);
 uint8_t spi_write(uint8_t dat);
+#endif
+
+#ifdef SPI_HARDWARE
+void spi_mosi(uint8_t pin, uint8_t mode, uint8_t freq);
+void init_spi_master(uint8_t cs, uint8_t sclk, uint8_t miso, uint8_t mosi, uint8_t mode);
+uint8_t spi_write(uint8_t dat);
+uint8_t spi_read(void);
+#endif
+
+uint8_t spi_read_buf(uint8_t reg, uint8_t *pBuf, uint8_t length);
+void spi_write_buf(uint8_t reg, uint8_t *pBuf, uint8_t len);
 #endif
