@@ -11,22 +11,6 @@
 #define ENABLE_UART0 1
 #define ENABLE_UART1 1
 
-#ifdef ENABLE_GPIO
-#include "gpio.h"
-#endif
-
-#ifdef ENABLE_GPIO
-#include "uart.h"
-#endif
-
-#ifdef ENABLE_GPIO
-#include "i2c.h"
-#endif
-
-#ifdef ENABLE_SPI
-#include "spi.h"
-#endif
-
 void board_init(void);
 
 #endif

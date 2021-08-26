@@ -18,6 +18,8 @@ nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片�
 - 最多19个GPIO
 - 提供SOP8，SSOP16，QFN32(4x4mm)三种封装
 
+## KEIL新建工程向导
+- [工程向导](Keil_New_Project_Wizard.md)
 ## 基础示例程序
 
 - [led](./Project/led/app/main.c) - gpio控制led灯
@@ -26,7 +28,7 @@ nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片�
 - [watch_dog]() - 看门狗程序
 - [delay](./Project/led/app/main.c) - 系统级精确延时
 - [extern_isr]() - 外部引脚输入中断
-- [adc]() - ADC多路采样
+- [adc](./Project/adc/app/main.c) - ADC多路采样
 - [uart](./Project/uart/app/main.c) - 串口示例程序
 - [pwm]() - PWM输出程序
 - [i2c_master]() - 硬件i2c主机程序

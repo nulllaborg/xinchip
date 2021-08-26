@@ -6,10 +6,11 @@
 void board_init(void)
 {
     #if (ENABLE_TIMER == 1)
-    init_timer();
+//    init_timer();
     #endif
+	
     #if (ENABLE_GPIO == 1)
-    init_gpio();
+//    init_gpio();
     #endif
 	
     #if (ENABLE_I2C == 1)

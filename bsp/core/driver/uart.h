@@ -2,6 +2,8 @@
 #define _UART_H_
 
 #include <stdint.h>
+#include "system.h"
+#include "gpio.h"
 
 #define  BAUD_1000000   0x00100011
 #define  BAUD_921600    0x24002711

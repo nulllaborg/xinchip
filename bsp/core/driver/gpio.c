@@ -1,5 +1,3 @@
-#include "board.h"
-#include "Arduino.h"
 #include "gpio.h"
 
 gpio_config_t gpio_mux_config = {

@@ -1,5 +1,3 @@
-#include "system.h"
-#include "gpio.h"
 #include "uart.h"
 
 uHandler_callback uHandler_Callback[2] = {(uHandler_callback)0, (uHandler_callback)0};

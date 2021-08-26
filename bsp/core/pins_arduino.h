@@ -78,23 +78,26 @@ static const uint8_t A7 = 7;
 
 #define digitalPinToInterrupt(p)  ((p) == 2 ? 0 : ((p) == 3 ? 1 : NOT_AN_INTERRUPT))
 
-#ifdef ARDUINO_MAIN
+//#ifdef ARDUINO_MAIN
 
-const uint8 boardADCPins[NUM_ANALOG_INPUTS] __FLASH__ = {
-    2, 3, 19 , 18 , 0 , 1 , 4 , 5
+static uint8_t boardADCPins[NUM_ANALOG_INPUTS] = {
+	21, 20, 19 , 18 , 0 , 1 , 4 , 5
 };
 
-const uint16_t port_to_mode_PGM[] = {
-	NOT_A_PORT,
-	NOT_A_PORT,
+static uint16_t port_to_mode_PGM[] = {
+//	NOT_A_PORT,
+//	NOT_A_PORT,
+	0,
+	0,
 };
 
-const uint8 boardPWMPins[NUM_PWM_PINS] __FLASH__ = {
+static uint8_t boardPWMPins[NUM_PWM_PINS] = {
     21, 20, 0 , 1 , 12 , 13
 };
 
 
-#endif
+
+//#endif
 
 #define SERIAL_PORT_MONITOR   Serial
 #define SERIAL_PORT_HARDWARE  Serial

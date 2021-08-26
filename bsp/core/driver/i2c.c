@@ -1,5 +1,8 @@
 #include "i2c.h"
+#include "gt20l16s1y.h"
 
+extern uint8_t data[4];
+extern uint8_t rx_buff[0x20];
 i2cHandler_callback_t i2cHandler_Callback = (i2cHandler_callback_t)0;
 
 /* ---------------------------------------------------------------------------------------------------
@@ -182,6 +185,7 @@ void i2c_slave_write(uint8_t val)
 {
     writeReg32(I2C_DATA_CMD, val);
 }
+
 /* ---------------------------------------------------------------------------------------------------
 - 函数名称: i2c_slave_read
 - 函数功能: 为i2c从设备获取数据
@@ -194,6 +198,7 @@ uint8_t i2c_slave_read(void)
     readReg32(I2C_DATA_CMD, val); 
     return (val);
 }
+
 /* ---------------------------------------------------------------------------------------------------
 - 函数名称: I2C_Handler
 - 函数功能: I2C中断处理函数
@@ -202,18 +207,22 @@ uint8_t i2c_slave_read(void)
 ----------------------------------------------------------------------------------------------------*/
 void I2C_Handler(void)
 {
-    uint32_t stat, value;   
-    readReg32(I2C_INTR_STAT, stat);
-    if(stat == 0) return;
-    if(stat & 0x200) 
-		readReg32(I2C_CLR_STOP_DET, value);    
-    if(stat & 0x40)  
-		readReg32(I2C_CLR_TX_ABRT, value);
-    readReg32(I2C_CLR_INTR, value);      //- 清除中断    
-	if(stat & 0x20) {
+    uint32_t state, value; 
+	static uint8_t rx_num = 0;	
+    readReg32(I2C_INTR_STAT, state);  
+    if(state & 0x04) {
+		data[rx_num++] = i2c_slave_read();
+//		uart_send_char(1, data[rx_num-1]);
+	}
+	if(state & 0x20) { //接收到请求数据信号
+		rx_num = 0;
 		if(i2cHandler_Callback != (i2cHandler_callback_t)0) {
 			i2cHandler_Callback();
-		}  
+		} 
 	}
+//	if(state & 0x200) { //接收到停止信号	
+//		uart_send_char(1, 'f');		
+//	}
+	readReg32(I2C_CLR_INTR, value);      //- 清除中断 
 }
 //IIC_SLAVE_END

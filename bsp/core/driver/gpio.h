@@ -2,6 +2,7 @@
 #define _GPIO_H_
 
 #include "board.h"
+#include "Arduino.h"
 
 #define DETECT_INTER_NUM(num,val)  ((val>>num)&0x01)
 
