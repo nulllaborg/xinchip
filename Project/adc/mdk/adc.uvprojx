@@ -7,16 +7,17 @@
 
   <Targets>
     <Target>
-      <TargetName>uart</TargetName>
+      <TargetName>adc</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pArmCC>5060750::V5.06 update 6 (build 750)::ARMCC</pArmCC>
       <TargetOption>
         <TargetCommonOption>
           <Device>ARMCM0</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.4.2.0</PackID>
+          <PackID>ARM.CMSIS.5.6.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
-          <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M0") CLOCK(12000000) ESEL ELITTLE</Cpu>
+          <Cpu>IROM(0x00000000,0x00040000) IRAM(0x20000000,0x00020000) CPUTYPE("Cortex-M0") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
           <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000)</FlashDriverDll>
@@ -31,7 +32,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:ARMCM0$Device\ARM\SVD\ARMCM0.svd</SFDFile>
+          <SFDFile></SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -47,7 +48,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>uart</OutputName>
+          <OutputName>adc</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -78,12 +79,14 @@
             <nStopB2X>0</nStopB2X>
           </BeforeMake>
           <AfterMake>
-            <RunUserProg1>1</RunUserProg1>
-            <RunUserProg2>1</RunUserProg2>
-            <UserProg1Name>fromelf --bin --output=s.bin !L</UserProg1Name>
-            <UserProg2Name>Xincboot_tool s.bin uart.bin</UserProg2Name>
+            <RunUserProg1>0</RunUserProg1>
+            <RunUserProg2>0</RunUserProg2>
+            <UserProg1Name></UserProg1Name>
+            <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
+            <nStopA1X>0</nStopA1X>
+            <nStopA2X>0</nStopA2X>
           </AfterMake>
           <SelectedForBatchBuild>0</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
@@ -147,7 +150,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>1</TargetSelection>
+          <TargetSelection>6</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -161,7 +164,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>BIN\UL2CM3.DLL</Driver>
+            <Driver>STLink\ST-LINKIII-KEIL_SWO.dll</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -239,12 +242,12 @@
             <Ro1Chk>0</Ro1Chk>
             <Ro2Chk>0</Ro2Chk>
             <Ro3Chk>0</Ro3Chk>
-            <Ir1Chk>0</Ir1Chk>
+            <Ir1Chk>1</Ir1Chk>
             <Ir2Chk>0</Ir2Chk>
             <Ra1Chk>0</Ra1Chk>
             <Ra2Chk>0</Ra2Chk>
             <Ra3Chk>0</Ra3Chk>
-            <Im1Chk>0</Im1Chk>
+            <Im1Chk>1</Im1Chk>
             <Im2Chk>0</Im2Chk>
             <OnChipMemories>
               <Ocm1>
@@ -361,6 +364,8 @@
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
             <useXO>0</useXO>
+            <v6Lang>0</v6Lang>
+            <v6LangP>0</v6LangP>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -433,20 +438,30 @@
               <FileType>1</FileType>
               <FilePath>..\app\main.c</FilePath>
             </File>
-            <File>
-              <FileName>HardwareSerial.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\bsp\core\HardwareSerial.c</FilePath>
-            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>core</GroupName>
+          <Files>
             <File>
               <FileName>HardwareSerial1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\bsp\core\HardwareSerial1.c</FilePath>
             </File>
             <File>
+              <FileName>HardwareSerial.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\bsp\core\HardwareSerial.c</FilePath>
+            </File>
+            <File>
               <FileName>ringbuffer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\bsp\core\ringbuffer.c</FilePath>
+            </File>
+            <File>
+              <FileName>wiring_analog.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\bsp\core\wiring_analog.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -454,49 +469,19 @@
           <GroupName>bsp</GroupName>
           <Files>
             <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\bsp\core\driver\adc.c</FilePath>
+            </File>
+            <File>
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\bsp\core\driver\gpio.c</FilePath>
             </File>
             <File>
-              <FileName>board.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\bsp\core\board.c</FilePath>
-            </File>
-            <File>
               <FileName>uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\bsp\core\driver\uart.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Include</GroupName>
-          <Files>
-            <File>
-              <FileName>Arduino.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\bsp\core\Arduino.h</FilePath>
-            </File>
-            <File>
-              <FileName>pins_arduino.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\bsp\variants\standard\pins_arduino.h</FilePath>
-            </File>
-            <File>
-              <FileName>gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\bsp\core\driver\gpio.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>core</GroupName>
-          <Files>
-            <File>
-              <FileName>wiring_digital.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\bsp\core\wiring_digital.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -7,6 +7,9 @@
 ## 开发板
 nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片，抛开蓝牙之后，其实就是一颗基于cortex-m0的单片机，在缺货盛行的时候，依然能保持低于3元的持续供货。
 
+## 开发环境搭建
+- [keil配置和程序下载](keil_new_project_wizard.md)
+
 ## 特点
 - 蓝牙4.2
 - ARM-CortexM0 32M主频,128K ram,256K flash
@@ -26,7 +29,7 @@ nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片�
 - [watch_dog]() - 看门狗程序
 - [delay](./Project/led/app/main.c) - 系统级精确延时
 - [extern_isr]() - 外部引脚输入中断
-- [adc]() - ADC多路采样
+- [adc](./Project/adc_demo/app/main.c) - ADC多路采样
 - [uart](./Project/uart/app/main.c) - 串口示例程序
 - [pwm]() - PWM输出程序
 - [i2c_master]() - 硬件i2c主机程序
