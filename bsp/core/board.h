@@ -5,26 +5,31 @@
 
 #define ENABLE_TIMER 0
 #define ENABLE_GPIO  1
-#define ENABLE_I2C   1
-#define ENABLE_SPI   1
+#define ENABLE_I2C   0
+#define ENABLE_SPI   0
 #define ENABLE_GPADC 0
-#define ENABLE_UART0 1
+#define ENABLE_UART0 0
 #define ENABLE_UART1 1
+#define ENABLE_SPI_FLASH 1
 
-#ifdef ENABLE_GPIO
+#if ENABLE_GPIO
 #include "gpio.h"
 #endif
 
-#ifdef ENABLE_GPIO
+#if ENABLE_GPIO
 #include "uart.h"
 #endif
 
-#ifdef ENABLE_GPIO
+#if ENABLE_I2C
 #include "i2c.h"
 #endif
 
-#ifdef ENABLE_SPI
+#if ENABLE_SPI
 #include "spi.h"
+#endif
+
+#if ENABLE_SPI_FLASH
+#include "spi_flash.h"
 #endif
 
 void board_init(void);

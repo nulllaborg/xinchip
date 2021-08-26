@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "system.h"
-#include "bsp_register_macro.h"
+#include "xc620.h"
 
 /*-------------------------------------------------------------------
 NOTE: bsp_spi0_flash文件下的变量要放在SHRAM0区域.

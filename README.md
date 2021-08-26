@@ -16,7 +16,7 @@ nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片�
 - 1路I2C
 - 6路PWM
 - 最多19个GPIO
-- 提供SOP8，SSOP16，QFN32(4x4mm)三种封装
+- 提供SOP16，SSOP16，QFN32(4x4mm)三种封装
 
 ## 基础示例程序
 
@@ -32,12 +32,12 @@ nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片�
 - [i2c_master]() - 硬件i2c主机程序
 - [i2c_slave](./Project/i2c_slave/app/main.c) - 硬件i2c从机设备程序
 - [spi]() - 硬件spi测试程序
-- [spi_flash]() - 内部falsh读写操作程序
+- [spi_flash](./Project/spi_flash/app/main.c) - 内部falsh读写操作程序
 - [ws2812b](./Project/ws2812b/app/main.c) - 基于spi硬件dma输出的ws2812b彩灯控制程序
 - [onewire]() - 单总线协议驱动基于ds18b20芯片实现
 
 ## 蓝牙示例程序
-- [peripheral]() - 从机连接透传示例程序
+- [peripheral](./Project/ble_bypass/app/main.c) - 从机蓝牙透传示例程序
 - [centerl]() - 主机连接透传示例程序
 - [ibeacon]() - ibeacon测试程序
 

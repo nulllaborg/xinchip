@@ -287,6 +287,30 @@ void ringbuffer_reset(struct st_ringbuffer *rb)
     rb->write_index = 0;
 }
 
+uint8_t ringbuffer_ends_with(struct st_ringbuffer *rb, const char* str)
+{
+	int find_str_len = strlen(str);
+
+	// b is the start position into the ring buffer
+	uint8_t *ringbuf_start = &rb->buffer_ptr[0];
+	uint8_t* b = &rb->buffer_ptr[rb->write_index] - find_str_len;
+	uint8_t* ringbuf_end = &rb->buffer_ptr[rb->buffer_size];
+	if (b < ringbuf_start)
+    b = b + rb->buffer_size;
+
+	char *p1 = (char*)&str[0];
+	char *p2 = p1 + find_str_len;
+	for (char *p=p1; p<p2; p++)
+	{
+		if(*p != *b)
+			return 0;
+		b++;
+		if (b == ringbuf_end)
+			b = ringbuf_start;
+	}
+	return 1;
+}
+
 #ifdef _USING_HEAP
 
 struct st_ringbuffer* rt_ringbuffer_create(uint16_t size)

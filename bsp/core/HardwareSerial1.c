@@ -12,6 +12,7 @@ void serial1_end(void);
 int serial1_available(void);
 int serial1_peek(void);
 size_t serial1_read(void);
+int serial1_read_tag(unsigned int timeout, const char* tag);
 size_t serial1_read_buf(uint8_t *buf, uint8_t len);
 int serial1_availableForWrite(void);
 void serial1_flush(void);
@@ -25,6 +26,7 @@ HardwareSerial Serial1 = {
     .available = serial1_available,
     .peek = serial1_peek,
     .read = serial1_read,
+	  .read_tag = serial1_read_tag,
 	  .read_buf = serial1_read_buf,
     //int availableForWrite(void);
     .flush = serial1_flush,
@@ -72,8 +74,8 @@ uint32_t serial1EventRun(uint8_t isr_status)
 
 void serial1_begin(uint32_t baud)
 {
-    ringbuffer_init(&Serial1.rx_rb, Serial.rx_buffer, SERIAL_RX_BUFFER_SIZE);
-    //ringbuffer_init(&Serial1.tx_rb, Serial.tx_buffer, SERIAL_TX_BUFFER_SIZE);
+    ringbuffer_init(&Serial1.rx_rb, Serial1.rx_buffer, SERIAL_RX_BUFFER_SIZE);
+    //ringbuffer_init(&Serial1.tx_rb, Serial1.tx_buffer, SERIAL_TX_BUFFER_SIZE);
     init_uart(1, UART1_TX_PIN, UART1_RX_PIN, baud);
     uart_register_callback(1, serial1EventRun);
     for (int i = 0; i < 10000; i++);
@@ -144,4 +146,32 @@ void serial1_printf(char *fmt, ...)
     va_start(v_arg, fmt);
     vsprintf(str, fmt, v_arg);
     serial1_write_buf((uint8_t *)str, strlen(str));
+}
+
+int serial1_read_tag(unsigned int timeout, const char* tag)
+{
+  unsigned long start = millis();
+	int ret = -1;
+	while ((millis() - start < timeout) && ret < 0)
+	{
+    if (ringbuffer_status(&(Serial1.rx_rb)))
+		{
+		  //Serial1.printf("find tag 1 \r\n");
+			if (tag != NULL)
+			{ 	
+				//Serial1.printf("find tag 2 \r\n");
+				if (ringbuffer_ends_with(&(Serial1.rx_rb), tag))
+				{
+					//Serial1.printf("find tag 3\r\n");
+					ret = 0;
+					return 0;
+				}
+			}
+		}
+	}
+	if (millis() - start >= timeout)
+	{
+		//Serial1.printf(">>> TIMEOUT >>>");
+	}
+  return ret;
 }
