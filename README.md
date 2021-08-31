@@ -9,6 +9,7 @@ nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片�
 
 ## 开发环境搭建
 - [keil配置和程序下载](keil_new_project_wizard.md)
+- [蓝牙程序烧录指引](./tool/Nulllab Isp tool烧录工具使用教程.md)
 
 ## 特点
 - 蓝牙4.2
