@@ -1,8 +1,6 @@
 #include "adc.h"
 #include "HardwareSerial.h"
 
-uint8_t adc_rx_flag = 0;
-
 void adc_set_reference(uint8_t mode)
 {
     if (mode) {
@@ -51,16 +49,7 @@ int get_adc_val(uint8_t ch)
 		if ((((val >> 26) & 0xF) == ch) && (ch == ((val >> 10) & 0xF))) {
 			result = (uint32_t)(val & 0x3FF);
 			flag = 1;
-		}else if ((((val >> 26) & 0xF) == ch) && (ch != ((val >> 10) & 0xF))) {
-			result = (val >> 16) & 0x3FF;
-			flag = 1;			
-		}else if ((((val >> 26) & 0xF) != ch) && (ch == ((val >> 10) & 0xF))) {
-			result = val & 0x3FF;	
-			flag = 1;
 		}
-		setBitReg32(GPADC_FIFO_CTL, (1UL << (4)));
-		clearBitReg32(GPADC_FIFO_CTL, (1UL << (4)));
 	}
-	adc_rx_flag = 0;
     return result;
 }
