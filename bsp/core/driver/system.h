@@ -9,6 +9,13 @@
 #define FALSE 0
 #endif
 
+//#ifdef abs
+//#undef abs
+//#endif
+//#define min(a,b) ((a)<(b)?(a):(b))
+//#define max(a,b) ((a)>(b)?(a):(b))
+//#define abs(x) ((x)>0?(x):-(x))
+
 #define ASSERT(a)    while(!(a))
 
 #define CPU_CLOCK   32000000ul      /* Set Processor frequency */

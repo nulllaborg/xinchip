@@ -7,6 +7,9 @@
 ## 开发板
 nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片，抛开蓝牙之后，其实就是一颗基于cortex-m0的单片机，在缺货盛行的时候，依然能保持低于3元的持续供货。
 
+## 开发环境搭建
+- [keil配置和程序下载](keil_new_project_wizard.md)
+
 ## 特点
 - 蓝牙4.2
 - ARM-CortexM0 32M主频,128K ram,256K flash
@@ -16,7 +19,7 @@ nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片�
 - 1路I2C
 - 6路PWM
 - 最多19个GPIO
-- 提供SOP8，SSOP16，QFN32(4x4mm)三种封装
+- 提供SOP16，SSOP16，QFN32(4x4mm)三种封装
 
 ## KEIL新建工程向导
 - [工程向导](Keil_New_Project_Wizard.md)
@@ -26,7 +29,7 @@ nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片�
 - [button]() - 按键输入
 - [timer]() - 定时器
 - [watch_dog]() - 看门狗程序
-- [delay](./Project/led/app/main.c) - 系统级精确延时
+- [delay](./Project/led/app/main.c)- 系统级精确延时
 - [extern_isr]() - 外部引脚输入中断
 - [adc](./Project/adc/app/main.c) - ADC多路采样
 - [uart](./Project/uart/app/main.c) - 串口示例程序
@@ -34,12 +37,14 @@ nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片�
 - [i2c_master]() - 硬件i2c主机程序
 - [i2c_slave](./Project/i2c_slave/app/main.c) - 硬件i2c从机设备程序
 - [spi]() - 硬件spi测试程序
-- [spi_flash]() - 内部falsh读写操作程序
+- [spi_flash](./Project/spi_flash/app/main.c) - 内部falsh读写操作程序
 - [ws2812b](./Project/ws2812b/app/main.c) - 基于spi硬件dma输出的ws2812b彩灯控制程序
 - [onewire]() - 单总线协议驱动基于ds18b20芯片实现
+- [rtc]() - 单片机内部rtc使用
+- [pm]() - 电源管理，低功耗配置
 
 ## 蓝牙示例程序
-- [peripheral]() - 从机连接透传示例程序
+- [peripheral](./Project/ble_bypass/app/main.c) - 从机蓝牙透传示例程序
 - [centerl]() - 主机连接透传示例程序
 - [ibeacon]() - ibeacon测试程序
 

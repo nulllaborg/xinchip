@@ -30,11 +30,11 @@
 #define R_UARTx_TSR(a) (*UARTx_TSR(a))
 #define R_UARTx_RBR(a) (*UARTx_RBR(a))
 
-#if (ENABLE_UART0 == 1)
+//#if (ENABLE_UART0 == 1)
 #define UART0_TX_PIN    18
 #define UART0_RX_PIN    19
 #define UART0_BAUD      115200
-#endif
+//#endif
 
 #if (ENABLE_UART1 == 1)
 #define UART1_TX_PIN    18

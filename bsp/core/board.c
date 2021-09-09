@@ -13,6 +13,9 @@ void board_init(void)
 //    init_gpio();
     #endif
 	
+	  #if (ENABLE_SPI_FLASH == 1)
+    init_gpio();
+    #endif
     #if (ENABLE_I2C == 1)
     #endif  
 	

@@ -65,7 +65,7 @@ uint32_t ringbuffer_putchar_force(struct st_ringbuffer *rb, const uint8_t ch);
 uint32_t ringbuffer_get(struct st_ringbuffer *rb, uint8_t *ptr, uint16_t length);
 size_t ringbuffer_getchar(struct st_ringbuffer *rb, uint8_t *ch);
 uint32_t ringbuffer_data_len(struct st_ringbuffer *rb);
-
+uint8_t ringbuffer_ends_with(struct st_ringbuffer *rb, const char* str);
 #ifdef _USING_HEAP
 struct st_ringbuffer* ringbuffer_create(uint16_t length);
 void ringbuffer_destroy(struct st_ringbuffer *rb);

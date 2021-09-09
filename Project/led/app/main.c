@@ -15,7 +15,7 @@ int	main(void)
     pinMode(25, OUTPUT);
     digitalWrite(24, HIGH);
     digitalWrite(25, HIGH);
-	  register_systick_callback(flash_led, 100);
+	  register_systick_callback(flash_led, 1000);
 	  systick_init();
 	
     while(1) {
