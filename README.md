@@ -7,9 +7,11 @@
 ## 开发板
 nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片，抛开蓝牙之后，其实就是一颗基于cortex-m0的单片机，在缺货盛行的时候，依然能保持低价位持续供货。
 
+![main_board](./Picture/main_board.jpg)
+
 ## 开发环境搭建
 - [keil配置和程序下载](keil_new_project_wizard.md)
-- [蓝牙程序烧录指引](./tool/user_manual.md)
+- [串口烧录程序](./tool/user_manual.md)
 
 ## 特点
 - 蓝牙4.2
@@ -40,7 +42,7 @@ nulllab推出第一款基于国产蓝牙芯片xc620的开发板，这个芯片�
 - [ws2812b](./Project/ws2812b/app/main.c) - 基于spi硬件dma输出的ws2812b彩灯控制程序
 - [onewire]() - 单总线协议驱动基于ds18b20芯片实现
 - [rtc]() - 单片机内部rtc使用
-- [pm]() - 电源管理，低功耗配置
+- [pm](./Project/pm/app/main.c) - 电源管理，低功耗配置
 
 ## 蓝牙示例程序
 - [peripheral](./Project/ble_bypass/app/main.c) - 从机蓝牙透传示例程序
