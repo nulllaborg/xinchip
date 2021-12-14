@@ -3,11 +3,11 @@
 #include "system.h"
 #include "xc620.h"
 
-#define ENABLE_TIMER 0
+#define ENABLE_TIMER 1
 #define ENABLE_GPIO  1
-#define ENABLE_I2C   0
+#define ENABLE_I2C   1
 #define ENABLE_SPI   0
-#define ENABLE_GPADC 0
+#define ENABLE_GPADC 1
 #define ENABLE_UART0 0
 #define ENABLE_UART1 1
 #define ENABLE_SPI_FLASH 1
@@ -16,12 +16,20 @@
 #include "gpio.h"
 #endif
 
+#if ENABLE_TIMER
+#include "timer.h"
+#endif
+
 #if ENABLE_GPIO
 #include "uart.h"
 #endif
 
 #if ENABLE_I2C
 #include "i2c.h"
+#endif
+
+#if ENABLE_GPADC
+#include "adc.h"
 #endif
 
 #if ENABLE_SPI

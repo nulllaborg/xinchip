@@ -1,5 +1,10 @@
 *.o
 *.p
+*.mi
+*.bin
+*.uvguix.mi
+JLinkLog.txt
+JLinkSettings.ini
 /Listings
 /Objects/
 /Project/led/mdk/Listings/
@@ -8,6 +13,7 @@
 /Project/i2c_slave/mdk/Objects/
 /Project/uart/mdk/Listings/
 /Project/uart/mdk/Objects/
+/Project/uart/mdk/uart.uvguix.mi
 /Project/ws2812b/mdk/Listings/
 /Project/ws2812b/mdk/Objects/
 /Project/ble_bypass/mdk/Listings/
@@ -18,3 +24,7 @@
 /Project/spi_flash/mdk/Objects/
 /Project/pm/mdk/Listings/
 /Project/pm/mdk/Objects/
+/Project/timer/mdk/Listings/
+/Project/timer/mdk/Objects/
+/Project/i2c_master_scan/mdk/Listings/
+/Project/i2c_master_scan/mdk/Objects/

@@ -15,7 +15,8 @@
 #define I2C_SLAVE_STOP          (1<<9)
 typedef	void (*i2cHandler_callback_t)(void);
 
-void i2c_master_init(uint8_t i2cAddR, uint32_t speed);
+void i2c_master_init(uint8_t sda_pin, uint8_t scl_pin, uint8_t i2c_addr, uint32_t speed);
+void i2c_master_set_addr(uint8_t i2c_addr);
 void i2c_master_write(uint8_t suba, uint8_t idata);
 void i2c_master_writemulti(uint8_t suba, uint8_t no, uint8_t *s);
 void i2c_master_read(uint8_t suba, uint8_t *s);

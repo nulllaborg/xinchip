@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>uart</TargetName>
+      <TargetName>timer</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
@@ -47,7 +47,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>uart</OutputName>
+          <OutputName>base-led</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -81,7 +81,7 @@
             <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>1</RunUserProg2>
             <UserProg1Name>fromelf --bin --output=s.bin !L</UserProg1Name>
-            <UserProg2Name>Xincboot_tool s.bin uart.bin</UserProg2Name>
+            <UserProg2Name>Xincboot_tool s.bin timer.bin</UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
           </AfterMake>
@@ -433,21 +433,6 @@
               <FileType>1</FileType>
               <FilePath>..\app\main.c</FilePath>
             </File>
-            <File>
-              <FileName>HardwareSerial.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\bsp\core\HardwareSerial.c</FilePath>
-            </File>
-            <File>
-              <FileName>HardwareSerial1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\bsp\core\HardwareSerial1.c</FilePath>
-            </File>
-            <File>
-              <FileName>ringbuffer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\bsp\core\ringbuffer.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -459,9 +444,9 @@
               <FilePath>..\..\..\bsp\core\driver\gpio.c</FilePath>
             </File>
             <File>
-              <FileName>uart.c</FileName>
+              <FileName>timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\bsp\core\driver\uart.c</FilePath>
+              <FilePath>..\..\..\bsp\core\driver\timer.c</FilePath>
             </File>
           </Files>
         </Group>

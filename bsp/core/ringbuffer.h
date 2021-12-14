@@ -1,6 +1,9 @@
 #ifndef RINGBUFFER_H__
 #define RINGBUFFER_H__
 #include <stdint.h>
+
+typedef unsigned int size_t;
+
 #ifdef __cplusplus
 extern "C" {
 #endif

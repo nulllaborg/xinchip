@@ -18,6 +18,9 @@
 
 #define ASSERT(a)    while(!(a))
 
+#define bit(b) (1UL << (b))
+#define bitclear(b) ~(1UL << (b))
+
 #define CPU_CLOCK   32000000ul      /* Set Processor frequency */
 #define US_TICKS    32     //CPU_CLOCK/1000000
 #define MS_TICKS    32000  //CPU_CLOCK/1000

@@ -76,6 +76,13 @@ static const uint8_t A7 = 7;
 #define D18 18
 #define D19 19
 
+#define D20 20
+#define D21 21
+#define D22 22
+#define D23 23
+#define D24 24
+#define D25 25
+
 #define digitalPinToInterrupt(p)  ((p) == 2 ? 0 : ((p) == 3 ? 1 : NOT_AN_INTERRUPT))
 
 #ifdef ARDUINO_MAIN

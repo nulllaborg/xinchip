@@ -13,9 +13,14 @@
 extern "C"{
 #endif
 
+#ifndef HIGH
 #define HIGH 0x1
-#define LOW  0x0
+#endif
 
+#ifndef LOW
+#define LOW  0x0
+#endif
+    
 #define INPUT 0x0
 #define OUTPUT 0x1
 #define INPUT_PULLUP 0x2
@@ -72,9 +77,13 @@ extern "C"{
 #define bitWrite(value, bit, bitvalue) (bitvalue ? bitSet(value, bit) : bitClear(value, bit))
 
 typedef unsigned int word;
-
+#ifndef bit
 #define bit(b) (1UL << (b))
+#endif
+
+#ifndef bitclear
 #define bitclear(b) ~(1UL << (b))
+#endif
 
 typedef bool boolean;
 typedef uint8_t byte;
@@ -110,15 +119,7 @@ void detachInterrupt(uint8_t);
 
 // Get the bit location within the hardware port of the given virtual pin.
 // This comes from the pins_*.c file for the active board configuration.
-
 #define analogToPin(A) boardADCPins[A]
-#define digitalPinToPort(P) (P>>4)
-#define digitalPinToBitMask(P) (P&0x0F)
-#define digitalPinToTimer(P) ((P))
-
-#define portOutputRegister(P) (GPIO_PORT_DR0 + (P))
-#define portInputRegister(P) (GPIO_EXT_PORT0 + (P>>1))
-#define portModeRegister(P) (GPIO_PORT_DDR0 + (P))
 
 #define NOT_A_PIN 0
 #define NOT_A_PORT 0
@@ -133,25 +134,11 @@ void detachInterrupt(uint8_t);
 #define TIMER0BX  0x13
 
 #define TIMER1    0x20
-#define TIMER1A   0x20
-#define TIMER1B   0x21
-#define TIMER1C   0x22
-#define TIMER1AX  0x23
-#define TIMER1BX  0x24
 
 #define TIMER2    0x30
-#define TIMER2A   0x31
-#define TIMER2B   0x32
-#define TIMER2AX  0x33
-#define TIMER2BX  0x34
 
 #define TIMER3    0x40
-#define TIMER3A   0x40
-#define TIMER3B   0x41
-#define TIMER3C   0x42
-#define TIMER3AX  0x43
-#define TIMER3BX  0x44
-#define TIMER3AA  0x45
+
 
 #ifdef __cplusplus
 } // extern "C"

@@ -1,5 +1,4 @@
 #include "board.h"
-#include "Arduino.h"
 #include "gpio.h"
 
 gpio_config_t gpio_mux_config = {
@@ -152,9 +151,9 @@ uint8_t gpio_input_val(uint8_t pin)
 	read_reg = portInputRegister(port);
 	readReg32(read_reg, val);
 	if (val & bit(bitmask)) 
-		return HIGH;
+		return 1;
 	else 
-		return LOW;
+		return 0;
 }
 
 void gpio_mode_config(uint8_t pin, uint8_t mode)

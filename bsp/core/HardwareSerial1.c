@@ -26,8 +26,8 @@ HardwareSerial Serial1 = {
     .available = serial1_available,
     .peek = serial1_peek,
     .read = serial1_read,
-	  .read_tag = serial1_read_tag,
-	  .read_buf = serial1_read_buf,
+    .read_tag = serial1_read_tag,
+    .read_buf = serial1_read_buf,
     //int availableForWrite(void);
     .flush = serial1_flush,
     .write = serial1_write,

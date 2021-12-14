@@ -20,8 +20,8 @@ typedef struct ST_HardSerial
     int (*available)(void);
     int (*peek)(void);
     size_t (*read)(void);
-	  size_t (*read_buf)(uint8_t *, uint8_t);
-	  int (*read_tag)(unsigned int, const char*);
+    size_t (*read_buf)(uint8_t *, uint8_t);
+    int (*read_tag)(unsigned int, const char*);
     //int availableForWrite(void);
     void (*flush)(void);
     size_t (*write)(uint8_t);

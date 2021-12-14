@@ -11,15 +11,14 @@ void board_init(void)
     #if (ENABLE_GPIO == 1)
     init_gpio();
     #endif
-	
-	  #if (ENABLE_SPI_FLASH == 1)
+    #if (ENABLE_SPI_FLASH == 1)
     init_gpio();
     #endif
     #if (ENABLE_I2C == 1)
     #endif  
 	
     #if (ENABLE_GPADC == 1)
-    init_adc();
+    //init_adc();
     #endif
     
     #if (ENABL_UART0 == 1)

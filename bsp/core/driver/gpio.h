@@ -5,6 +5,14 @@
 
 #define DETECT_INTER_NUM(num,val)  ((val>>num)&0x01)
 
+#define digitalPinToPort(P) (P>>4)
+#define digitalPinToBitMask(P) (P&0x0F)
+#define digitalPinToTimer(P) ((P))
+
+#define portOutputRegister(P) (GPIO_PORT_DR0 + (P))
+#define portInputRegister(P) (GPIO_EXT_PORT0 + (P>>1))
+#define portModeRegister(P) (GPIO_PORT_DDR0 + (P))
+
 typedef enum{
     NOT_INT = 0,
     NA1_INT,

@@ -11,7 +11,7 @@ i2cHandler_callback_t i2cHandler_Callback = (i2cHandler_callback_t)0;
 void i2c_statuscheck(uint8_t nbit, uint8_t bitval)
 {
 	uint8_t	val;
-	for( ; ; )	{
+	for ( ; ; )	{
 		readReg32(I2C_STATUS, val);
 		if(bitval == ((val >> nbit) & 0x01)) break;
 	}	
@@ -25,24 +25,29 @@ void i2c_statuscheck(uint8_t nbit, uint8_t bitval)
 - 输入参数: i2c器件地址
 - 创建日期: 
 ----------------------------------------------------------------------------------------------------*/
-void i2c_master_init(uint8_t i2cAddR, uint32_t speed)
+void i2c_master_init(uint8_t sda_pin, uint8_t scl_pin, uint8_t i2c_addr, uint32_t speed)
 {
+	gpio_mux_ctl(sda_pin, 0);
+	gpio_fun_inter(sda_pin, 0);
+	gpio_mux_ctl(scl_pin, 0);
+	gpio_fun_inter(scl_pin, 0);
+	gpio_fun_sel(sda_pin, I2C_SDA);
+	gpio_fun_sel(scl_pin, I2C_SCL);
 	__ASSERT((speed == I2C_FAST_MODE) || (speed == I2C_STANDARD_MODE));
 	writeReg32(CPR_CTLAPBCLKEN_GRCTL, 0x8000800);
 	writeReg32(CPR_RSTCTL_SUBRST_SW, 0x400000);
 	writeReg32(CPR_RSTCTL_SUBRST_SW, 0x400040);
 	writeReg32(CPR_I2C_CLK_CTL, 0x110011);                //-> i2c_mclk = 16mhz.
 	writeReg32(I2C_ENABLE, 0x0); 
-	writeReg32(I2C_TAR, i2cAddR);
+	writeReg32(I2C_TAR, i2c_addr);
 	writeReg32(I2C_RX_TL, 0x00);
 	writeReg32(I2C_TX_TL, 0x00);
-	writeReg32(I2C_INTR_EN, 0x00);
+	writeReg32(I2C_INTR_EN, 0x00);  //主机7位地址
 	if(speed == I2C_FAST_MODE) {
 		writeReg32(I2C_CON, 0x65); 
 		writeReg32(I2C_FS_SCL_HCNT, 12);
 		writeReg32(I2C_FS_SCL_LCNT, 19); 
-	}
-	else if(speed == I2C_STANDARD_MODE) {
+	} else if(speed == I2C_STANDARD_MODE) {
 		writeReg32(I2C_CON, 0x63); 
 		writeReg32(I2C_SS_SCL_HCNT, 72);
 		writeReg32(I2C_SS_SCL_LCNT, 79); 
@@ -50,16 +55,22 @@ void i2c_master_init(uint8_t i2cAddR, uint32_t speed)
 	writeReg32(I2C_ENABLE, 0x1);
 }
 
+void i2c_master_set_addr(uint8_t i2c_addr)
+{
+    writeReg32(I2C_ENABLE, 0x0); 
+    writeReg32(I2C_TAR, i2c_addr);
+	writeReg32(I2C_ENABLE, 0x1);
+}
 /* ---------------------------------------------------------------------------------------------------
 - 函数名称: i2c_master_write
 - 函数功能: 写一个字节数据
-- 输入参数: i2c寄存器地址; 写数据;
+- 输入参数: reg: i2c寄存器地址; idata: 写数据;
 - 创建日期: 
 ----------------------------------------------------------------------------------------------------*/
-void i2c_master_write(uint8_t suba, uint8_t idata)
+void i2c_master_write(uint8_t reg, uint8_t idata)
 {
 	i2c_statuscheck(0, 0);
-	writeReg32(I2C_DATA_CMD, suba); 
+	writeReg32(I2C_DATA_CMD, reg); 
 	writeReg32(I2C_DATA_CMD, (idata | 0x200));
 }
 
@@ -209,8 +220,8 @@ void I2C_Handler(void)
 		readReg32(I2C_CLR_STOP_DET, value);    
     if(stat & 0x40)  
 		readReg32(I2C_CLR_TX_ABRT, value);
-    readReg32(I2C_CLR_INTR, value);      //- 清除中断    
-	if(stat & 0x20) {
+        readReg32(I2C_CLR_INTR, value);      //- 清除中断    
+	if (stat & 0x20) {
 		if(i2cHandler_Callback != (i2cHandler_callback_t)0) {
 			i2cHandler_Callback();
 		}  
